@@ -1,38 +1,239 @@
-.App {
-  text-align: center;
+body{
+  text-align: center; 
+  background-color: whitesmoke;
+  overflow-x: hidden;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"), linear-gradient(to right, #0083B0, #00B4DB);
+  
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-img{
+  background-image: url("../src/images/login-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+  position: relative;
+  z-index: -2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.overlay{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: rgb(97, 97, 81);
+  opacity: 0.5;
+  z-index: -1;
+  mix-blend-mode:saturation;
+}
+
+.login-container{
+  position: relative !important;
+  height: 100vh;
+
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"), linear-gradient(to right, #0083B0, #00B4DB);
+  
+}
+
+.login{
+background-color: whitesmoke;
+padding: 25px;
+width: 50%;
+border-radius: 10px;
+margin: 15% auto;
+}
+
+.login-title{
+  margin: 25px 0;
+}
+
+.login h2{ 
+color: #00B4DB
+}
+
+.slogan h1{
+  padding: 50px;
+  font-family: 'Pacifico', cursive;
+  margin: 0;
+ 
+}
+
+.main-page{
+  width: 50%;
+  margin: auto;
+}
+
+
+
+h1{
+  color: whitesmoke;
+  font-family: 'Pacifico', cursive;
+}
+
+h2{
+  font-family: 'Nunito', sans-serif;
+  color: whitesmoke;
+  
+}
+
+textarea{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  resize: none;
+ 
+}
+
+button{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  margin: 25px auto;
+  cursor: pointer;
+  
+}
+
+
+.post-container button{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+ 
+  margin: 25px auto;
+  float: right;
+  vertical-align: bottom;
+}
+
+.post-container{
+  padding: 25px;
+  background-color: whitesmoke;
+  color: black;
+  text-align: left;
+  margin: 25px auto;
+  border-radius: 10px;
+  font-family: 'Encode Sans', sans-serif;
+}
+
+
+.post-container h2{
+display: inline-block;
+vertical-align: bottom;
+margin-left: 25px;
+font-family: 'Encode Sans', sans-serif;
+color: black;
+}
+.post-container p{
+ font-size: 1.2rem;
+ word-wrap: break-word;
+ color: black;
+
+}
+
+.post-container button{
+  border: 2px rgb(122, 156, 250)  solid;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+
+
+.profile-details{
+  border-bottom:  2px rgb(122, 156, 250) solid;
+  margin-bottom: 25px;
+  padding: 25px;
+}
+
+.profle-name{
+
+  left: 10px;
+}
+
+.profile-pic{
+  width: 50px;
+  border-radius: 50%;
+}
+
+.comment-input{
+  text-align: left;
+  
+}
+
+.comment-btn{
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-input input{
+  width: 100%;
+  padding: 10px;
+}
+
+.login-input{
+  display:block;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 5px;
+  border:none;
+}
+
+nav{
+  position: fixed;
+  top: 0;
+  background-color: white;
+  width: 200px;
+  height: 100%;
+}
+
+nav ul{
+  list-style-type: none;
+  text-align: left;
+ 
+padding: 0;
+}
+
+nav li{
+  padding: 20px 0;
+  margin: 10px;
+  
+}
+
+.main-page{
+  
+}
+
+.fade-in-fwd {
+	-webkit-animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
   }
 }
