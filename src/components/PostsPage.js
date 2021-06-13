@@ -22,7 +22,7 @@ const PostsPage = () =>{
       setPosts(prevPosts =>{
         return prevPosts.filter((postItem, index)=> {
           return index !== id;
-      console.log(prevPosts);
+  
         })
         
       })
@@ -37,8 +37,8 @@ const PostsPage = () =>{
         <CreatePost onAdd ={addPost}/>
          {posts.map((postItem, index) => {
          return (<Post
-          key={72}
-          id ={73}
+          key={index}
+          id ={index}
           content={postItem.content}
           onDelete={deletePost}
          />

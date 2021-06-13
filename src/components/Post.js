@@ -57,7 +57,7 @@ return(<>
         <button onClick={handleClick}><FcFullTrash size={25}/></button>
          <div className="profile-details">
         
-         <img class="profile-pic" src="images/so-me image.jpg" alt="" />
+         <img class="profile-pic" src="images/profile-pic.jpg" alt="" />
          <h2 class="profile-name">Ciaran O'Grady</h2>
          
          </div>
