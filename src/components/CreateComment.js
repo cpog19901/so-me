@@ -37,8 +37,8 @@ const CreateComment = (props) =>{
         
         <div className="comment-input">
         <form action="">
-        <textarea name="commentContent" value={comment.commentContent} id="" cols="30" rows="10" placeholder="Enter a comment" onChange={handleChangeComment}></textarea>
-        <button name="submit-comment" type="submit" onClick={submitComment}>Submit comment</button>
+        <textarea name="commentContent" value={comment.commentContent} id="" cols="30" rows="5" placeholder="Enter a comment" onChange={handleChangeComment}></textarea>
+        <button class="submit-btn" name="submit-comment" type="submit" onClick={submitComment}>Submit comment</button>
         </form>
         </div>
     )

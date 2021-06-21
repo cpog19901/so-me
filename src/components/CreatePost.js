@@ -29,7 +29,7 @@ function CreatePost (props) {
             <form action="">
                 
                 <textarea name="content" type="text" placeholder= "Enter a post" value={post.content} onChange={handleChange}/>
-                <button name="submit-post" type="submit" onClick={submitPost}>Submit post</button>
+                <button class="submit-btn" name="submit-post" type="submit" onClick={submitPost}>Submit post</button>
             </form>
             
         </div>

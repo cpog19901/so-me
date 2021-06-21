@@ -1,8 +1,13 @@
 body{
   text-align: center; 
-  background-color: whitesmoke;
+  background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   overflow-x: hidden;
-  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"), linear-gradient(to right, #0083B0, #00B4DB);
+ 
+  background-image: url("https://www.transparenttextures.com/patterns/skulls.png"),linear-gradient(to right, #3a7bd5, #00d2ff);
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   
 
 }
@@ -33,8 +38,13 @@ body{
   position: relative !important;
   height: 100vh;
 
-  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"), linear-gradient(to right, #0083B0, #00B4DB);
+  background-image: url("https://www.transparenttextures.com/patterns/skulls.png"),linear-gradient(to right, #3a7bd5, #00d2ff);
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   
+}
+
+.posts-container{
+  flex: 1;
 }
 
 .login{
@@ -61,10 +71,25 @@ color: #00B4DB
 }
 
 .main-page{
-  width: 50%;
+  width: 500px;
   margin: auto;
+  background-color: white;
+  height: 100%;
+  padding: 20px;
+  border-radius: 0 0 25px 25px;
+ 
 }
 
+nav{
+  position: fixed;
+  height: 100vh;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-right: 2px solid dodgerblue;
+  padding: 0 10px;
+}
 
 
 h1{
@@ -85,7 +110,7 @@ textarea{
   width: 100%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   resize: none;
- 
+  border: 1px silver solid;
 }
 
 button{
@@ -98,6 +123,9 @@ button{
   
 }
 
+.comment-content, .post-content{
+  word-wrap: break-word;
+}
 
 .post-container button{
   padding: 10px;
@@ -109,14 +137,19 @@ button{
   vertical-align: bottom;
 }
 
-.post-container{
+.post-container, .comment-container{
   padding: 25px;
   background-color: whitesmoke;
   color: black;
   text-align: left;
   margin: 25px auto;
-  border-radius: 10px;
+  border-radius: 15px;
+  border: 3px dodgerblue solid;
   font-family: 'Encode Sans', sans-serif;
+}
+
+.comment-container{
+  width: 90%;
 }
 
 
@@ -125,7 +158,7 @@ display: inline-block;
 vertical-align: bottom;
 margin-left: 25px;
 font-family: 'Encode Sans', sans-serif;
-color: black;
+
 }
 .post-container p{
  font-size: 1.2rem;
@@ -135,23 +168,33 @@ color: black;
 }
 
 .post-container button{
-  border: 2px rgb(122, 156, 250)  solid;
+  border: 2px dodgerblue  solid;
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
   
 }
 
+.post-container button:hover{
+  background-color: dodgerblue;
+  transition: ease-in;
+  transition-duration: 150ms;
+}
+
 
 .profile-details{
-  border-bottom:  2px rgb(122, 156, 250) solid;
+  border-bottom:  2px dodgerblue solid;
   margin-bottom: 25px;
   padding: 25px;
 }
 
-.profle-name{
+.profile-name{
 
-  left: 10px;
+  background-color: dodgerblue;
+  color: whitesmoke;
+  padding: 7.5px ;
+  border-radius: 15px;
+ 
 }
 
 .profile-pic{
@@ -184,29 +227,125 @@ color: black;
 }
 
 nav{
+ 
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: white;
+
+  
+  
+}
+
+.menu-icon{
+  width: 50px;
   position: fixed;
   top: 0;
-  background-color: white;
-  width: 200px;
-  height: 100%;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+  padding: 5px;
 }
 
 nav ul{
   list-style-type: none;
   text-align: left;
- 
-padding: 0;
+  padding: 10px
 }
 
 nav li{
-  padding: 20px 0;
-  margin: 10px;
   
+position: relative;
 }
 
-.main-page{
-  
+nav a, .submit-btn{
+  padding: 15px 5px;
+  display: block;
+  border: 2px solid dodgerblue;
+  margin: 5px 0;
+  border-radius: 10px;
+  transition: ease-in;
+  transition-duration: 150ms;
+  font-family:'Segoe UI', Tahoma, Verdana, sans-serif;  
+  color: dodgerblue;
+  width: 100%;
 }
+
+nav a:hover, .submit-btn:hover{
+
+  color:white;
+  background-color: dodgerblue;
+  text-decoration: none;
+}
+
+
+.link-icon{
+  width: 25px;
+ position: absolute;
+ margin-right: 5px;
+ right: 0;
+ top: 50%;
+ transform: translateY(-50%);
+}
+
+#logout-btn{
+margin-top: 50vh;
+}
+
+.nav-logo{
+
+color: dodgerblue;
+padding: 50px;
+}
+
+.submit-btn{
+  margin: 10px 0;
+}
+
+
+
+.posts-heading-container{
+
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.posts-heading{
+  text-align: center;
+  color: whitesmoke;
+  text-decoration: underline;
+  padding: 15px;
+  border-radius: 15px;
+  background: #00d2ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header-img{
+  width: 100px;
+  position: absolute;
+ top: 50%;
+ left: 75%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid dodgerblue;
+  transform: translate(-50%,-50%);
+ }
+
+.posts-slogan{
+  margin-bottom: 50px;
+  padding: 10px;
+  font-family: 'Pacifico', cursive;
+  text-align: left;
+}
+
+
 
 .fade-in-fwd {
 	-webkit-animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -235,5 +374,25 @@ nav li{
     -webkit-transform: translateZ(0);
             transform: translateZ(0);
     opacity: 1;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .main-page{
+    width: 300px;
+  }
+
+  .post-container{
+    text-align: center;
+  }
+
+  .posts-heading{
+    text-align: left;
+  }
+
+  .profile-name{
+    display: block;
   }
 }

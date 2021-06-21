@@ -58,10 +58,10 @@ return(<>
          <div className="profile-details">
         
          <img class="profile-pic" src="images/profile-pic.jpg" alt="" />
-         <h2 class="profile-name">Ciaran O'Grady</h2>
+         <h4 class="profile-name">Ciaran O'Grady</h4>
          
          </div>
-         <p>{props.content}</p>
+         <h3 class="post-content">{props.content}</h3>
          
         
          {/* <FcLikePlaceholder size={25} onClick={countLike}/>

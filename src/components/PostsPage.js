@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import CreatePost from "../components/CreatePost"
 import Post from "../components/Post"
-
+import Nav from "../components/Nav"
 
 const PostsPage = () =>{
 
@@ -33,7 +33,18 @@ const PostsPage = () =>{
     return(
     <div>
       <div class="main-page">
-      <h1>Posts</h1>
+     
+     <div class= "nav-container">
+      <Nav/>
+      </div>
+      <div class="posts-container">
+      <div class="posts-heading-container">
+      <h1 class="posts-heading">Posts</h1>
+      
+      <img class="header-img" src="images/social-media.svg" alt="" />
+     
+      </div>
+      
         <CreatePost onAdd ={addPost}/>
          {posts.map((postItem, index) => {
          return (<Post
@@ -44,7 +55,7 @@ const PostsPage = () =>{
          />
          );
          })}
-        
+         </div>
     </div>
 
     </div>
