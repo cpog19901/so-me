@@ -4,13 +4,13 @@ import React, {useState} from "react";
 const CreateComment = (props) =>{
 
 
-
+    // set comment content to blank string
     const[comment, setComment] = useState({
         commentContent: ""
     })
 
 
-
+    //submitComment function will prevent refresh add the comment to the comments array and 
     function submitComment(e){
         props.onAdd(comment);
         e.preventDefault();
@@ -19,7 +19,7 @@ const CreateComment = (props) =>{
         });
     }
 
-
+        //get name and value of the event and then update "content" value in comment state
     const handleChangeComment =(event) =>{
         const {name, value} = event.target;
         setComment(prevComment => {

@@ -1,23 +1,66 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-
+import Photos from "./components/Photos"
 import PostsPage from "./components/PostsPage";
 import LoginPage from "./components/LoginPage";
+import Friends from "./components/Friends"
+import Nav from "./components/Nav"
 import './App.css';
+import axios from 'axios';
 
 
 function App() {
 
+  const [friendsList, setFriendsList] = useState([])
+  const [photoGallery, setPhotoGallery] = useState([])
 
+  useEffect(()=>{
+    axios.get("https://randomuser.me/api/?results=50")
+    .then(response => { 
+      setFriendsList(response.data.results);
+      
+    })
+    .catch(error =>{
+      console.log(error);
+    })
+  }, [])
+
+
+//   const fetchData = () =>{
+//     const usersAPI = "https://randomuser.me/api/?results=50"
+//     const imagesAPI = "https://picsum.photos/v2/list?limit=10"
+
+//     const getUser = axios.get(usersAPI)
+//     const getImage = axios.get(imagesAPI);
+
+// axios.all([getUser, getImage]).then(
+//   axios.spread((...allData)=>{
+//     const allDataUser = allData[0]
+//     const allDataImage = allData[1]
+
+//     setFriendsList(allDataUser.data.results);
+//     setPhotoGallery(allDataImage.data)
+    
+
+//   })
+// )
+// }
+
+
+  // useEffect(() => {
+  //   fetchData()
+  // },[])
 
 
   return (<>
-   <Router>
   
-   
+   <Router>
+   <Nav/>
     <Switch>
-    <Route path="/" exact component={LoginPage} />
-    <Route path="/posts" component={PostsPage}/>
+    <Route path="/" exact render={() => <LoginPage  />}/>
+    <Route path="/posts" render={() => <PostsPage  />}/>
+    <Route path="/friends" render={() => <Friends  friendsList={friendsList} />}/>
+    <Route path="/photos" render={() => <Photos photoGallery={photoGallery} />}/>
     </Switch>
     
     </Router> 

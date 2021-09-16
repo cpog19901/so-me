@@ -5,19 +5,21 @@ import Nav from "../components/Nav"
 
 const PostsPage = () =>{
 
+  //set state of posts constant to an empty array
+
     const [posts, setPosts] = useState([]);
 
-    console.log(posts);
-    
-    
-    
-    
+      
+    // addPost function sets the state of posts to return previous submitted posts and the latest post
+
     function addPost(newPost){
       setPosts(prevPosts =>{
        return [...prevPosts, newPost ]
       })
     }
     
+    // deletePost function sets the state of posts to return filtered items in the array where the id is not equal to index. 
+
     function deletePost(id){
       setPosts(prevPosts =>{
         return prevPosts.filter((postItem, index)=> {
@@ -46,6 +48,9 @@ const PostsPage = () =>{
       </div>
       
         <CreatePost onAdd ={addPost}/>
+
+        {/* Map through the posts array and display each post in it*/}
+
          {posts.map((postItem, index) => {
          return (<Post
           key={index}
