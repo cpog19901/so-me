@@ -58,26 +58,14 @@ const Friends = ({friendsList}) => {
             setSearchQuery(searchTerm);     
    }  
 
+ 
+
     return (
         <div>
         <h1>Friends</h1>
         <TextField onChange={handleSearch}/>
  <Grid container spacing={3} alignItems="center" className={classes.grid} >
-        {/* {friendsList.map((friend, i)=>{
-            return(
-               
-                <Grid key={i} id={i}  item xs={6}  md={6} lg={4}>
-                <Paper className={classes.box}>
-                <img className={classes.profilePic} src={friend.picture.large} alt="" />
-               <Typography className={classes.name} variant="h4" component="h4"> {friend.name.first + " " + friend.name.last}</Typography>
-               <p className={classes.email}>{friend.email}</p>
-                   
-                
-                </Paper>
-                </Grid>
-               
-            )
-        })} */}
+    
 
 
         {friendsList.filter(val =>{
@@ -88,9 +76,9 @@ const Friends = ({friendsList}) => {
             }
         }).map((friend, i)=>{
             return(
-               
-                <Grid key={i} id={i}  item xs={6}  md={6} lg={4}>     
-                <Link to="/">
+                
+                <Grid  key={i} id={i}  item xs={6}  md={6} lg={4}>     
+                <Link to={`/friends/${friend.login.username}`}>  
                 <Paper className={classes.box}>
                 <img className={classes.profilePic} src={friend.picture.large} alt="" />
                <Typography className={classes.name} variant="h4" component="h4"> {friend.name.first + " " + friend.name.last}</Typography>
@@ -98,6 +86,7 @@ const Friends = ({friendsList}) => {
                 </Paper>
                 </Link>
                 </Grid>
+               
                
             )
         })}

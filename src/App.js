@@ -4,6 +4,7 @@ import Photos from "./components/Photos"
 import PostsPage from "./components/PostsPage";
 import LoginPage from "./components/LoginPage";
 import Friends from "./components/Friends"
+import Wall from "./components/Wall";
 import Nav from "./components/Nav"
 import './App.css';
 import axios from 'axios';
@@ -59,8 +60,9 @@ function App() {
     <Switch>
     <Route path="/" exact render={() => <LoginPage  />}/>
     <Route path="/posts" render={() => <PostsPage  />}/>
-    <Route path="/friends" render={() => <Friends  friendsList={friendsList} />}/>
+    <Route path="/friends" exact render={() => <Friends  friendsList={friendsList} />}/>
     <Route path="/photos" render={() => <Photos photoGallery={photoGallery} />}/>
+    <Route path="/friends/:username" render={() => <Wall  friendsList={friendsList} />}/>
     </Switch>
     
     </Router> 
