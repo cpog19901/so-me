@@ -32,7 +32,7 @@ const uploadImage = () =>{
     formData.append("upload_preset", "iq5xsc7g")
 
     Axios.post("https://api.cloudinary.com/v1_1/dly13wqwx/image/upload", formData).then((response)=>{
-      console.log(response.data.url);
+      console.log(response.data);
     });
 
 };

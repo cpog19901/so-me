@@ -18,7 +18,8 @@ const useStyles = makeStyles({
         paper:{
             width: "75%",
             margin:"auto",
-            border: "2px solid dodgerblue",
+            borderRight: "2px solid dodgerblue",
+            borderLeft: "2px solid dodgerblue",
          
         },
         img:{
@@ -41,6 +42,7 @@ const [value, setValue] = useState('one');
 
 const handleChange = (event, newValue) => {
   setValue(newValue);
+
 };
 
 

@@ -2,18 +2,18 @@ import React from "react";
 
 const LoginPage = () =>{
     return(
-        <div class="row ">
-        <div class="col-sm-6 login-img">
-        <div class="overlay"></div>
+        <div className="row ">
+        <div className="col-sm-6 login-img">
+        <div className="overlay"></div>
         </div>
-        <div class="col-sm-6 login-container">
-        <div class="slogan">
+        <div className="col-sm-6 login-container">
+        <div className="slogan">
         <h1>So-Me</h1>
         <h2>Social media that's free from adverts!</h2>
         </div>
-        <div class= "login">
+        <div className= "login">
         
-        <h2 class="login-title">Login</h2>
+        <h2 className="login-title">Login</h2>
        
             <input className="login-input" type="text" placeholder="Username" />
             <input className="login-input" type="password" placeholder="Password" />

@@ -4,6 +4,7 @@ import { FcLike, FcFullTrash, FcLikePlaceholder} from "react-icons/fc";
 import { AiFillLike } from "react-icons/ai";
 import CreateComment from "../components/CreateComment";
 import Comment from "../components/Comment.js";
+import { v4 as uuidv4 } from 'uuid';
 
 function Post(props){
 
@@ -23,12 +24,14 @@ function addComment(newComment){
 
 // deleteComment function returns only comments 
 function deleteComment(id){
+  console.log(id)
         setComments(prevComments =>{
           return prevComments.filter((commentItem, index)=> {
-            return index !== id;
+            
+            return commentItem.id !== id;
           })
         })
-        console.log(comments);
+        
       }
 
 
@@ -69,10 +72,10 @@ return(<>
         <span>{todayDate}</span>
         <button onClick={handleClick}><FcFullTrash size={25}/></button>
          <div className="profile-details">
-         <img class="profile-pic" src="images/profile-pic.jpg" alt="" />
-         <h4 class="profile-name">Ciaran O'Grady</h4>
+         <img className="profile-pic" src="images/profile-pic.jpg" alt="" />
+         <h4 className="profile-name">Ciaran O'Grady</h4>
          </div>
-         <h3 class="post-content">{props.content}</h3>
+         <h3 className="post-content">{props.content}</h3>
 
          <AiFillLike style={ {color: isLikeClicked ? "red" : "black"}} size={25} onClick={changeColor}/>
          <span>{like}</span>
@@ -84,8 +87,8 @@ return(<>
 {/* map though all coomments and display them */}
         {comments.map((commentItem, i) => {
          return (<Comment
-          key={i}
-          id ={i}
+          key={commentItem.id}
+          id ={commentItem.id}
           content={commentItem.commentContent}
           onDelete={deleteComment}
           changeColor ={changeColor}

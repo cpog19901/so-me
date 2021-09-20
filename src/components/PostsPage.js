@@ -3,6 +3,8 @@ import CreatePost from "../components/CreatePost"
 import Post from "../components/Post"
 import Nav from "../components/Nav"
 
+
+
 const PostsPage = () =>{
 
   //set state of posts constant to an empty array
@@ -21,9 +23,12 @@ const PostsPage = () =>{
     // deletePost function sets the state of posts to return filtered items in the array where the id is not equal to index. 
 
     function deletePost(id){
+      
       setPosts(prevPosts =>{
         return prevPosts.filter((postItem, index)=> {
-          return index !== id;
+
+          
+          return postItem.id !== id;
   
         })
         
@@ -34,16 +39,16 @@ const PostsPage = () =>{
 
     return(
     <div>
-      <div class="main-page">
+      <div className="main-page">
      
-     <div class= "nav-container">
+     <div className= "nav-container">
       <Nav/>
       </div>
-      <div class="posts-container">
-      <div class="posts-heading-container">
-      <h1 class="posts-heading">Posts</h1>
+      <div className="posts-container">
+      <div className="posts-heading-container">
+      <h1 className="posts-heading">Posts</h1>
       
-      <img class="header-img" src="images/social-media.svg" alt="" />
+      <img className="header-img" src="images/social-media.svg" alt="" />
      
       </div>
       
@@ -53,8 +58,8 @@ const PostsPage = () =>{
 
          {posts.map((postItem, index) => {
          return (<Post
-          key={index}
-          id ={index}
+         key={postItem.id}
+          id ={postItem.id}
           content={postItem.content}
           onDelete={deletePost}
          />
