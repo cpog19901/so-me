@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { Button, TextField } from "@material-ui/core"
 
 function CreatePost (props) {
 
@@ -26,7 +27,8 @@ function CreatePost (props) {
 
     function handleChange (event) {
         const {name, value} = event.target;
-        setPost(prevPost => {
+          setPost(prevPost => {
+           
             return{
                 ...prevPost,
                 [name]:value
@@ -40,8 +42,19 @@ function CreatePost (props) {
         <div>
             <form action="">
                 
-                <textarea name="content" type="text" placeholder= "Enter a post" value={post.content} onChange={handleChange}/>
-                <button className="submit-btn" name="submit-post" type="submit" onClick={submitPost}>Submit post</button>
+               
+                <TextField
+                fullWidth
+                placeholder= "Enter a post" 
+                name="content"
+                value={post.content} 
+                onChange={handleChange}
+                id="filled-textarea"
+                multiline
+                variant="filled"
+                label="New post"
+                />
+                <Button color="primary" variant="contained" size="medium" className="submit-btn" name="submit-post" type="submit" onClick={submitPost}>Submit post</Button>
             </form>
             
         </div>

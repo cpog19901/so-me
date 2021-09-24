@@ -5,7 +5,7 @@ import { AiFillLike } from "react-icons/ai";
 import CreateComment from "../components/CreateComment";
 import Comment from "../components/Comment.js";
 import { v4 as uuidv4 } from 'uuid';
-
+import { Paper, Button } from "@material-ui/core"
 function Post(props){
 
 // set comments to empty array       
@@ -38,6 +38,8 @@ function deleteComment(id){
 //get date     
 var today = new Date(),
 date = today.getDate() + '-' + (today.getMonth() + 1) + '-' +  today.getFullYear() ;
+console.log(today.getHours);
+
 
 //set date in todayDate state
 const [todayDate, setTodayDate] = useState(date); 
@@ -68,9 +70,9 @@ function changeColor(){
 
 
 return(<>
-        <div className="post-container fade-in-fwd">
+        <Paper elevation ={12}className="post-container fade-in-fwd">
         <span>{todayDate}</span>
-        <button onClick={handleClick}><FcFullTrash size={25}/></button>
+        <Button onClick={handleClick}><FcFullTrash size={25}/></Button>
          <div className="profile-details">
          <img className="profile-pic" src="images/profile-pic.jpg" alt="" />
          <h4 className="profile-name">Ciaran O'Grady</h4>
@@ -80,7 +82,7 @@ return(<>
          <AiFillLike style={ {color: isLikeClicked ? "red" : "black"}} size={25} onClick={changeColor}/>
          <span>{like}</span>
         
-        </div>
+        </Paper>
         
 
 

@@ -4,16 +4,20 @@ import {Paper, Tabs, Tab, Box} from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 
 
+
+
 const useStyles = makeStyles({
     
         tabs:{
             backgroundColor: "white",
             color: "green",
             margin: "auto",
+            
         },
         tab:{
             margin:"auto",
-            fontSize: "15px"
+            fontSize: "15px",
+            fontWeight: "bold"
         },
         paper:{
             width: "75%",
@@ -58,12 +62,11 @@ const handleChange = (event, newValue) => {
                 const uriEnd = "/flat/64.png";
                 const fullUri = uri + code + uriEnd
 
-                console.log(fullUri)
-
+            
 
                 return(
-                    <>
-                    <Paper className={classes.paper}><h2 key={i} id={i}>{friendDetails.login.username}</h2>
+                    
+                    <Paper key={i} id={i} className={classes.paper}><h2 >{friendDetails.login.username}</h2>
                     <img className={classes.img} src={friendDetails.picture.large} alt="" />
                     <h2>{friendDetails.location.state + ", " +friendDetails.location.country}</h2>
                     <img  src={fullUri} alt="" />
@@ -73,7 +76,7 @@ const handleChange = (event, newValue) => {
                         onChange={handleChange}
                         textColor="primary"
                         indicatorColor="primary"
-                        aria-label="secondary tabs example"
+                        aria-label="profile-tabs"
                         className={classes.tabs}
                         
                     >
@@ -85,7 +88,7 @@ const handleChange = (event, newValue) => {
                    </Paper>
 
                  
-                   </>
+                
 
                 )
             })}

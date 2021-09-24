@@ -4,7 +4,7 @@ body{
 
   overflow-x: hidden;
   color: #3a7bd5;
-  background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
+  /* background-image: url("https://www.transparenttextures.com/patterns/skulls.png"); */
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   
 
@@ -36,7 +36,7 @@ body{
   position: relative !important;
   height: 100vh;
 
-  background-image: url("https://www.transparenttextures.com/patterns/skulls.png"),linear-gradient(to right, #3a7bd5, #00d2ff);
+  
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   
 }
@@ -53,20 +53,16 @@ border-radius: 10px;
 margin: 15% auto;
 }
 
-.login-title{
-  margin: 25px 0;
-}
 
-.login h2{ 
-color: #00B4DB
-}
 
-.slogan h1{
+
+
+/* .slogan h1{
   padding: 50px;
   font-family: 'Pacifico', cursive;
   margin: 0;
  
-}
+} */
 
 .main-page{
   width: 500px;
@@ -78,7 +74,7 @@ color: #00B4DB
  
 }
 
-nav{
+/* nav{
   position: fixed;
   height: 100vh;
   overflow-x: hidden;
@@ -87,19 +83,11 @@ nav{
   z-index: 1;
   border-right: 2px solid dodgerblue;
   padding: 0 10px;
-}
+  background-color: white;
+} */
 
 
-h1{
-  color: dodgerblue;
-  font-family: 'Pacifico', cursive;
-}
 
-h2{
-  font-family: 'Nunito', sans-serif;
-  color: rgb(12, 110, 209);
-  
-}
 
 textarea{
   padding: 10px;
@@ -111,15 +99,6 @@ textarea{
   border: 1px silver solid;
 }
 
-button{
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  display: block;
-  margin: 25px auto;
-  cursor: pointer;
-  
-}
 
 .comment-content, .post-content{
   word-wrap: break-word;
@@ -224,82 +203,17 @@ font-family: 'Encode Sans', sans-serif;
   border:none;
 }
 
-nav{
- 
-  position: fixed;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: white;
-
-  
-  
-}
-
-.menu-icon{
-  width: 50px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  cursor: pointer;
-  padding: 5px;
-}
-
-nav ul{
-  list-style-type: none;
-  text-align: left;
-  padding: 10px
-}
-
-nav li{
-  
-position: relative;
-}
-
-nav a, .submit-btn{
-  padding: 15px 5px;
-  display: block;
-  border: 2px solid dodgerblue;
-  margin: 5px 0;
-  border-radius: 10px;
-  transition: ease-in;
-  transition-duration: 150ms;
-  font-family:'Segoe UI', Tahoma, Verdana, sans-serif;  
-  color: dodgerblue;
-  width: 100%;
-}
-
-nav a:hover, .submit-btn:hover{
-
-  color:white;
-  background-color: dodgerblue;
-  text-decoration: none;
-}
 
 
-.link-icon{
-  width: 25px;
- position: absolute;
- margin-right: 5px;
- right: 0;
- top: 50%;
- transform: translateY(-50%);
-}
 
-#logout-btn{
-margin-top: 50vh;
-}
 
-.nav-logo{
 
-color: dodgerblue;
-padding: 50px;
-}
 
-.submit-btn{
-  margin: 10px 0;
-}
+
+
+
+
+
 
 
 

@@ -8,9 +8,24 @@ import Wall from "./components/Wall";
 import Nav from "./components/Nav"
 import './App.css';
 import axios from 'axios';
+import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 
+
+
+
+const theme = createTheme({
+ 
+  typography: {
+    fontFamily: [
+      'Fredoka One', 
+      "cursive"
+    ].join(",")
+  }
+})
 
 function App() {
+
+
 
   const [friendsList, setFriendsList] = useState([])
   const [photoGallery, setPhotoGallery] = useState([])
@@ -54,7 +69,7 @@ function App() {
 
 
   return (<>
-  
+  <ThemeProvider theme={theme}>
    <Router>
    <Nav/>
     <Switch>
@@ -66,6 +81,7 @@ function App() {
     </Switch>
     
     </Router> 
+    </ThemeProvider>
   </>);
 }
 

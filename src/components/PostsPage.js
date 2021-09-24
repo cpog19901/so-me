@@ -2,10 +2,14 @@ import React,{useState} from "react";
 import CreatePost from "../components/CreatePost"
 import Post from "../components/Post"
 import Nav from "../components/Nav"
+import {makeStyles} from "@material-ui/core/styles"
+import {Typography} from "@material-ui/core"
 
 
 
 const PostsPage = () =>{
+
+  
 
   //set state of posts constant to an empty array
 
@@ -16,7 +20,7 @@ const PostsPage = () =>{
 
     function addPost(newPost){
       setPosts(prevPosts =>{
-       return [...prevPosts, newPost ]
+       return [newPost, ...prevPosts ]
       })
     }
     
@@ -25,7 +29,7 @@ const PostsPage = () =>{
     function deletePost(id){
       
       setPosts(prevPosts =>{
-        return prevPosts.filter((postItem, index)=> {
+        return prevPosts.filter((postItem)=> {
 
           
           return postItem.id !== id;
@@ -39,16 +43,17 @@ const PostsPage = () =>{
 
     return(
     <div>
+   
+     
       <div className="main-page">
      
-     <div className= "nav-container">
-      <Nav/>
-      </div>
+     
+      
       <div className="posts-container">
       <div className="posts-heading-container">
-      <h1 className="posts-heading">Posts</h1>
+      <Typography variant="h3">Posts</Typography>
       
-      <img className="header-img" src="images/social-media.svg" alt="" />
+ 
      
       </div>
       

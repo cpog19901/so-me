@@ -3,7 +3,7 @@ import { Typography, Button, Box, Paper, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom"
-
+import skulls from "../images/skulls.png"
 
 
 
@@ -36,7 +36,13 @@ const useStyles = makeStyles({
     },
     email:{
         overflowWrap: "break-word",
-        padding: 10
+        padding: 10,
+        fontFamily: ['Roboto','sans-serif'].join(),
+    },
+    bg:{
+        backgroundImage: `url(${skulls})`,
+        backgroundRepeat: "repeat",
+        backgroundColor: "aliceblue"
     }
 })
 
@@ -61,9 +67,9 @@ const Friends = ({friendsList}) => {
  
 
     return (
-        <div>
-        <h1>Friends</h1>
-        <TextField onChange={handleSearch}/>
+        <div className={classes.bg}>
+        <Typography variant="h2">Friends</Typography>
+        <TextField onChange={handleSearch} placeholder="Search for a friend"/>
  <Grid container spacing={3} alignItems="center" className={classes.grid} >
     
 
@@ -76,13 +82,12 @@ const Friends = ({friendsList}) => {
             }
         }).map((friend, i)=>{
             return(
-                
                 <Grid  key={i} id={i}  item xs={6}  md={6} lg={4}>     
-                <Link to={`/friends/${friend.login.username}`}>  
+                <Link style={{ textDecoration: 'none' }} to={`/friends/${friend.login.username}`}>  
                 <Paper className={classes.box}>
                 <img className={classes.profilePic} src={friend.picture.large} alt="" />
                <Typography className={classes.name} variant="h4" component="h4"> {friend.name.first + " " + friend.name.last}</Typography>
-               <p className={classes.email}>{friend.email}</p>
+               <Typography variant="body1" className={classes.email}>{friend.email}</Typography>
                 </Paper>
                 </Link>
                 </Grid>
