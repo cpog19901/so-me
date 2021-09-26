@@ -1,9 +1,19 @@
 import React, {useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Button, TextField } from "@material-ui/core"
+import {makeStyles} from "@material-ui/core/styles"
+
+const useStyles = makeStyles({
+    submitBtn:{
+        margin: "25px",
+    }
+})
+
 
 function CreatePost (props) {
 
+const classes = useStyles()
+ 
 //set key id to empty string in post object
 
     const [post, setPost] = useState({
@@ -53,8 +63,9 @@ function CreatePost (props) {
                 multiline
                 variant="filled"
                 label="New post"
+                
                 />
-                <Button color="primary" variant="contained" size="medium" className="submit-btn" name="submit-post" type="submit" onClick={submitPost}>Submit post</Button>
+                <Button className={classes.submitBtn} color="primary" variant="contained" size="medium" name="submit-post" type="submit" onClick={submitPost}>Submit post</Button>
             </form>
             
         </div>

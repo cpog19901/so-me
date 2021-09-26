@@ -14,11 +14,15 @@ const PostsPage = () =>{
   //set state of posts constant to an empty array
 
     const [posts, setPosts] = useState([]);
+    const [postDate, setPostDate]= useState("");
 
       
+
+
     // addPost function sets the state of posts to return previous submitted posts and the latest post
 
     function addPost(newPost){
+  
       setPosts(prevPosts =>{
        return [newPost, ...prevPosts ]
       })
@@ -67,6 +71,7 @@ const PostsPage = () =>{
           id ={postItem.id}
           content={postItem.content}
           onDelete={deletePost}
+          postDate ={postDate}
          />
          );
          })}

@@ -20,6 +20,10 @@ const theme = createTheme({
       'Fredoka One', 
       "cursive"
     ].join(",")
+  },
+
+  body1:{
+    fontFamily: ['Roboto','sans-serif'].join(),
   }
 })
 

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     overflowX: "hidden",
     top: "0",
     left: "0",
-    zIndex: "1",
+    zIndex: "100",
     borderRight: "2px solid dodgerblue",
     padding: "0 10px",
     backgroundColor: "aliceblue",
@@ -62,7 +62,7 @@ const useStyles = makeStyles({
         position: "fixed",
         top: "0",
         left: "0",
-        zIndex: "10",
+        zIndex: "101",
         fontSize:"40px"
     }
   })

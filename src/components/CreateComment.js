@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { Button, TextField } from "@material-ui/core"
 
 const CreateComment = (props) =>{
 
@@ -40,8 +41,23 @@ const CreateComment = (props) =>{
         
         <div className="comment-input">
         <form action="">
-        <textarea name="commentContent" value={comment.commentContent} id="" cols="30" rows="5" placeholder="Enter a comment" onChange={handleChangeComment}></textarea>
-        <button className="submit-btn" name="submit-comment" type="submit" onClick={submitComment}>Submit comment</button>
+        <TextField 
+        name="commentContent" 
+        value={comment.commentContent} 
+        fullWidth
+        placeholder="Enter a comment" 
+        multiline
+        variant="filled"
+        label="New comment"
+        onChange={handleChangeComment}>
+        </TextField>
+        <Button 
+        className="submit-btn"
+        name="submit-comment" 
+        type="submit" 
+        variant="contained"
+        color="primary"
+        onClick={submitComment}>Submit comment</Button>
         </form>
         </div>
     )
