@@ -126,14 +126,14 @@ axios.all([getUsers, getPosts, getComments, getPhotos]).then(
   <ThemeProvider theme={theme}>
    <Router>
     <Switch>
-    <Route exact path='/' component={Test} />
-    {/* <Route path="/" exact render={() => <LoginPage friendsList={friendsList} />}/>
-    <Route path="/posts" exact render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
-    <Route path="/friends" exact render={() => <Friends  friendsList={friendsList} />}/>
-    <Route path="/photos" render={() => <Photos addPhoto={addPhoto} photos={photos} usersPhotos={usersPhotos}/>}/>
-    <Route path="/posts/:postId"  render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
-    <Route path="/friends/:username" render={() => <Wall friendsList={friendsList} usersPosts={usersPosts} usersPhotos={usersPhotos} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments}  />}/>
-    <Route path="/logout" render={() => <LogoutPage/>}/> */}
+   
+    <Route path="/so-me/" exact render={() => <LoginPage friendsList={friendsList} />}/>
+    <Route path="/so-me/posts" exact render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
+    <Route path="/so-me/friends" exact render={() => <Friends  friendsList={friendsList} />}/>
+    <Route path="/so-me/photos" render={() => <Photos addPhoto={addPhoto} photos={photos} usersPhotos={usersPhotos}/>}/>
+    <Route path="/so-me/posts/:postId"  render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
+    <Route path="/so-me/friends/:username" render={() => <Wall friendsList={friendsList} usersPosts={usersPosts} usersPhotos={usersPhotos} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments}  />}/>
+    <Route path="/so-me/logout" render={() => <LogoutPage/>}/>
     </Switch>
     
     </Router> 

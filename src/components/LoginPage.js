@@ -147,7 +147,7 @@ e.preventDefault();
 friendsList.filter(friend => {
     if(friend.login.username === creds.username && friend.login.password === creds.password){
         localStorage.setItem("myuser", JSON.stringify(friend));
-        history.push("/friends")
+        history.push("/so-me/friends")
     } else{
         setError(true);
     }
