@@ -125,14 +125,13 @@ axios.all([getUsers, getPosts, getComments, getPhotos]).then(
   <ThemeProvider theme={theme}>
    <Router>
     <Switch>
-    <Route path="/" exact render={() => <h1>test</h1>}/>
-    {/* <Route path="/" exact render={() => <LoginPage friendsList={friendsList} />}/>
+    <Route path="/" exact render={() => <LoginPage friendsList={friendsList} />}/>
     <Route path="/posts" exact render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
     <Route path="/friends" exact render={() => <Friends  friendsList={friendsList} />}/>
     <Route path="/photos" render={() => <Photos addPhoto={addPhoto} photos={photos} usersPhotos={usersPhotos}/>}/>
     <Route path="/posts/:postId"  render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
     <Route path="/friends/:username" render={() => <Wall friendsList={friendsList} usersPosts={usersPosts} usersPhotos={usersPhotos} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments}  />}/>
-    <Route path="/logout" render={() => <LogoutPage/>}/> */}
+    <Route path="/logout" render={() => <LogoutPage/>}/>
     </Switch>
     
     </Router> 
