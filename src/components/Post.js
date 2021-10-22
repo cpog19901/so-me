@@ -96,7 +96,7 @@ function addComment(newComment){
 
   
 
-  fetch("http://localhost:8000/comments/", {
+  fetch("https://so-me-db.herokuapp.com/comments/", {
     method: "POST",
     headers: {"Content-type": "application/json"},
     body: JSON.stringify(newComment)
@@ -125,7 +125,7 @@ function deleteComment(id){
           })
         })
         
-        fetch("http://localhost:8000/comments/"+id, {
+        fetch("https://so-me-db.herokuapp.com/"+id, {
         method: "DELETE",
       })
         

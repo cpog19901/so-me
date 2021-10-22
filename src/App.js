@@ -44,7 +44,7 @@ function App() {
     setPosts(prevPosts =>{
      return [newPost, ...prevPosts ]
     })
-    fetch("http://localhost:8000/posts/", {
+    fetch("https://so-me-db.herokuapp.com/posts", {
       method: "POST",
       headers: {"Content-type": "application/json"},
       body: JSON.stringify(newPost)
@@ -55,7 +55,7 @@ function App() {
     setPhotos((prevItems)=>{
       return [...prevItems, newPhoto];
     });
-    fetch("http://localhost:8000/photos/", {
+    fetch("https://so-me-db.herokuapp.com/photos", {
       method: "POST",
       headers: {"Content-type": "application/json"},
       body: JSON.stringify(newPhoto)
@@ -76,7 +76,7 @@ function App() {
         })
       })
 
-      fetch("http://localhost:8000/posts/"+id, {
+      fetch("https://so-me-db.herokuapp.com/posts"+id, {
         method: "DELETE",
       })
     
@@ -84,10 +84,10 @@ function App() {
 
 
   const fetchData = () =>{
-    const usersAPI = "http://localhost:8000/users"
-    const postsAPI = "http://localhost:8000/posts"
-    const commentsAPI = "http://localhost:8000/comments"
-    const photosAPI = "http://localhost:8000/photos"
+    const usersAPI = "https://so-me-db.herokuapp.com/users"
+    const postsAPI = "https://so-me-db.herokuapp.com/posts"
+    const commentsAPI = "https://so-me-db.herokuapp.com/comments"
+    const photosAPI = "https://so-me-db.herokuapp.com/photos"
 
     const getUsers = axios.get(usersAPI)
     const getPosts = axios.get(postsAPI);
