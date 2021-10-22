@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {Grid, Tabs, Tab, Box, Paper, Input, Button, Typography} from "@material-ui/core"
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import image from '../images/login-img.jpg'; // Import using relative path
 import skulls from "../images/skulls.png"
-import {Link} from "react-router-dom"
+import { useHistory} from "react-router-dom"
 
 
 
@@ -116,7 +116,44 @@ const useStyles = makeStyles({
 
 })
 
-const LoginPage = () =>{
+const LoginPage = ({friendsList, getCurrentUser}) =>{
+
+let history = useHistory();
+
+const [creds, setCreds] = useState({
+    username: "",
+    password: "",
+})
+
+const [error, setError] = useState(false)
+
+
+const handleCreds = (e) =>{
+const {name, value} = e.target
+setCreds (prevCreds =>{
+    return {
+        ...prevCreds,
+        [name]: value
+    }
+})
+}
+
+const handleSubmit=(e)=>{
+
+e.preventDefault();
+
+
+
+friendsList.filter(friend => {
+    if(friend.login.username === creds.username && friend.login.password === creds.password){
+        localStorage.setItem("myuser", JSON.stringify(friend));
+        history.push("/friends")
+    } else{
+        setError(true);
+    }
+})
+
+}
 
 const classes = useStyles();
 
@@ -124,7 +161,7 @@ const classes = useStyles();
     return(
         
       
-
+        
         <Grid container >
         <Grid item xs={12} sm={6}>
       <div id="image-holder" className={classes.image1}>
@@ -147,14 +184,20 @@ const classes = useStyles();
          <Paper className={classes.loginPaper} >
          <Typography variant="h1">So-Me</Typography>
             <Typography className={classes.subtitle} variant="subtitle1">Connect with your friends without anything getting in your way!</Typography>
-            <Input className={classes.input} fullWidth placeholder="Username"/>
-            <Input type="password" className={classes.input} fullWidth placeholder="Password"/>
-           <Link to="/posts" style={{ textDecoration: 'none' }}><Button className={classes.btn} size="large" variant="contained" color="primary">Sign In</Button></Link>
+            {error ? <Typography variant ="subtitle1">Incorrect username and/or password</Typography> : null}
+            <form action="">
+            <Input className={classes.input} fullWidth placeholder="Username" onChange={handleCreds} name="username" value={creds.username}/>
+            <Input type="password" className={classes.input} fullWidth placeholder="Password" onChange={handleCreds} name="password" value ={creds.password}/>
+           <Button type="submit" className={classes.btn} size="large" variant="contained" color="primary" onClick={handleSubmit}>Sign In</Button>
+           </form>
+       
          </Paper>
         </Grid>
       
        
       </Grid>
+
+      
    
     )
 }

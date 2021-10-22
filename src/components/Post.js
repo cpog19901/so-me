@@ -1,13 +1,13 @@
 import React,{useState}  from "react";
-
-import { MdDeleteForever} from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
-
+import { TiDelete } from "react-icons/ti";
 import CreateComment from "../components/CreateComment";
 import Comment from "../components/Comment.js";
-import { v4 as uuidv4 } from 'uuid';
-import { Paper, Button, Typography, Avatar } from "@material-ui/core"
+import { Paper, Button, Typography, Avatar, Box } from "@material-ui/core"
 import {makeStyles} from "@material-ui/core/styles"
+
+const currentUser = JSON.parse(localStorage.getItem("myuser"));
+
 
 
 const useStyles = makeStyles({
@@ -19,6 +19,20 @@ const useStyles = makeStyles({
 
     avatar:{
       zIndex: "10"
+    },
+
+    date:{
+      top: "100%",
+    left: "80%",
+    transform: "translate(-50%, -50%)",
+    color: "white",
+    display: "inline",
+    padding: "8px",
+    position: "absolute",
+    borderRadius: "10px",
+    backgroundColor: "darkcyan",
+    whiteSpace: "nowrap",
+    fontFamily: "Roboto"
     },
 
     name:{
@@ -41,12 +55,14 @@ const useStyles = makeStyles({
     contentBox:{
       padding: "30px",
       textAlign: "justify",
-      marginBottom: "20px"
+      marginBottom: "20px",
+      position: "relative"
     },
     delIcon:{
-     float: "right",
-     padding:"10px",
-    
+     top: "0",
+     right: "0",
+     position: "absolute",
+     transform: "translateY(-50%)"
     }
 
 
@@ -64,13 +80,26 @@ const [comments, setComments] = useState([]);
 const[isLikeClicked, setIsLikeClicked] = useState(false);
 
 
-const currentDate = new Date().toLocaleString();
+const currentUser = JSON.parse(localStorage.getItem("myuser"));
+ 
+
 
 // addComment function setsComments state to return all previous comments and latest comment
 function addComment(newComment){
-
+ 
+  
   setComments(prevComments =>{
    return [...prevComments, newComment ];
+  })
+
+  
+
+  
+
+  fetch("http://localhost:8000/comments/", {
+    method: "POST",
+    headers: {"Content-type": "application/json"},
+    body: JSON.stringify(newComment)
   })
 }
 
@@ -88,6 +117,17 @@ function deleteComment(id){
             return commentItem.id !== id;
           })
         })
+
+        props.setUsersComments(prevComments =>{
+          return prevComments.filter((commentItem, index)=> {
+            
+            return commentItem.id !== id;
+          })
+        })
+        
+        fetch("http://localhost:8000/comments/"+id, {
+        method: "DELETE",
+      })
         
       }
 
@@ -122,18 +162,17 @@ function changeColor(){
 
 
 return(<>
-        <div className={classes.profileInfo}>
-         <Avatar className={classes.avatar}src="images/profile-pic.jpg" alt=""/>
-         <Typography className={classes.name} variant="h5">Ciaran O'Grady</Typography>
-         </div>
+     
+        <Box className={classes.profileInfo} >
+         <Avatar className={classes.avatar} src={props.avatar} alt=""/>
+         <Typography className={classes.name} variant="h5">{props.posterUsername}</Typography>
+         </Box>
         <Paper className={classes.contentBox} elevation ={12}>
-        <MdDeleteForever className={classes.delIcon} style={{cursor: "pointer", fontSize: "20px"}} onClick={handleClick}/>
+      { props.posterUsername === currentUser.login.username ? <TiDelete className={classes.delIcon} style={{cursor: "pointer", fontSize: "40px", color:"#bd1604"}} onClick={handleClick}/> : null}
+        <Typography variant="h6">{props.title}</Typography>
          <p className={classes.postContent}>{props.content}</p>
-
          <AiFillLike style={ {color: isLikeClicked ? "red" : "black"}} size={25} onClick={changeColor}/><span>{like}</span>
-         <Typography>{currentDate}</Typography>
-         
-    
+         <Typography className={classes.date}>{props.timestamp}</Typography>
         </Paper>
         
 
@@ -144,9 +183,12 @@ return(<>
           key={commentItem.id}
           id ={commentItem.id}
           content={commentItem.commentContent}
+          commentPostedBy ={commentItem.commentPostedBy}
+          commentAvatar ={commentItem.commentAvatar}
+          commentTimestamp = {commentItem.commentTimestamp}
           onDelete={deleteComment}
           changeColor ={changeColor}
-         
+          commentBelongsTo ={props.postId}
           isLikeClicked={isLikeClicked}
           like ={like}
          />
@@ -154,8 +196,32 @@ return(<>
          })}
 
         <CreateComment
-          onAdd={addComment}      
+          onAdd={addComment}   
+          commentBelongsTo ={props.postId}   
         />
+
+{props.usersComments.filter((commentItem)=>{
+  
+  return commentItem.commentOwner === props.postId 
+  
+}).map((commentItem, i) => {
+         return (<Comment
+          key={commentItem.id}
+          id ={commentItem.id}
+          content={commentItem.commentContent}
+          commentPostedBy ={commentItem.commentPostedBy}
+          commentAvatar ={commentItem.commentAvatar}
+          commentTimestamp = {commentItem.commentTimestamp}
+          onDelete={deleteComment}
+          changeColor ={changeColor}
+          commentBelongsTo ={props.postId}
+          isLikeClicked={isLikeClicked}
+          like ={like}
+         />
+         );
+         })}
+
+        
          
         
 

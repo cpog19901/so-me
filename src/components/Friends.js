@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom"
 import skulls from "../images/skulls.png"
+import Nav from "../components/Nav"
 
 
 
@@ -40,15 +41,17 @@ const useStyles = makeStyles({
         fontFamily: ['Roboto','sans-serif'].join(),
     },
     bg:{
-        backgroundImage: `url(${skulls})`,
-        backgroundRepeat: "repeat",
-        backgroundColor: "aliceblue"
+        // backgroundImage: `url(${skulls})`,
+        // backgroundRepeat: "repeat",
+        // backgroundColor: "aliceblue"
     }
 })
 
 
 
 const Friends = ({friendsList}) => {
+
+    const currentUser = JSON.parse(localStorage.getItem("myuser"));
 
   const classes = useStyles();
     const [searchQuery, setSearchQuery] = useState("")
@@ -67,6 +70,8 @@ const Friends = ({friendsList}) => {
  
 
     return (
+        <>
+        <Nav/>
         <div className={classes.bg}>
         <Typography variant="h2">Friends</Typography>
         <TextField onChange={handleSearch} placeholder="Search for a friend"/>
@@ -81,8 +86,10 @@ const Friends = ({friendsList}) => {
                 return val;
             }
         }).map((friend, i)=>{
+            if(friend.login.username != currentUser.login.username)
             return(
-                <Grid  key={i} id={i}  item xs={6}  md={6} lg={4}>     
+                <Grid  key={i} id={i}  item xs={6}  md={6} lg={4}> 
+                    
                 <Link style={{ textDecoration: 'none' }} to={`/friends/${friend.login.username}`}>  
                 <Paper className={classes.box}>
                 <img className={classes.profilePic} src={friend.picture.large} alt="" />
@@ -100,6 +107,7 @@ const Friends = ({friendsList}) => {
         <Button className ={classes.btn} onClick={handleClick}>Load more...</Button>
            
         </div>
+        </>
     );
 };
 

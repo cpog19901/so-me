@@ -6,19 +6,33 @@ import {makeStyles} from "@material-ui/core/styles"
 const useStyles = makeStyles({
     submitBtn:{
         margin: "25px",
-    }
+        backgroundColor: "dodgerblue"
+    },
+    textBox:{
+        backgroundColor:"aliceblue",
+    
+      }
 })
 
 
 function CreatePost (props) {
 
 const classes = useStyles()
+
+const currentDate = new Date().toLocaleString();
  
 //set key id to empty string in post object
 
+
+
+
     const [post, setPost] = useState({
         id: uuidv4(),
-        content: ""
+        title: "",
+        content: "",
+        posterUsername: props.posterUsername,
+        avatar: props.avatar,
+        timestamp: currentDate
     })
 
 
@@ -28,7 +42,11 @@ const classes = useStyles()
     e.preventDefault();
     setPost({
         id: uuidv4(),
-        content: ""
+        title: "",
+        content: "",
+        posterUsername: props.posterUsername,
+        avatar: props.avatar,
+        timestamp: currentDate
     });
 }
 
@@ -51,18 +69,31 @@ const classes = useStyles()
     return(
         <div>
             <form action="">
+            <TextField
+                fullWidth
+                placeholder= "Enter post title" 
+                name="title"
+                value={post.title} 
+                onChange={handleChange}
+                id="filled-textarea"
+                variant="filled"
+                label="Title"
+                className={classes.textBox}
+                
+                />
                 
                
                 <TextField
                 fullWidth
-                placeholder= "Enter a post" 
+                placeholder= "Enter post content" 
                 name="content"
                 value={post.content} 
                 onChange={handleChange}
                 id="filled-textarea"
                 multiline
                 variant="filled"
-                label="New post"
+                label="Content"
+                className={classes.textBox}
                 
                 />
                 <Button className={classes.submitBtn} color="primary" variant="contained" size="medium" name="submit-post" type="submit" onClick={submitPost}>Submit post</Button>

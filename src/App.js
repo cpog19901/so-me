@@ -5,10 +5,11 @@ import PostsPage from "./components/PostsPage";
 import LoginPage from "./components/LoginPage";
 import Friends from "./components/Friends"
 import Wall from "./components/Wall";
-import Nav from "./components/Nav"
+import SinglePost from "./components/SinglePost"
+import LogoutPage from "./components/LogoutPage"
 import './App.css';
 import axios from 'axios';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
 
@@ -32,56 +33,105 @@ function App() {
 
 
   const [friendsList, setFriendsList] = useState([])
-  const [photoGallery, setPhotoGallery] = useState([])
+  const [usersPosts, setUsersPosts] = useState([])
+  const [usersComments, setUsersComments] = useState([])
+  const [usersPhotos, setUsersPhotos] = useState([])
+  const [posts, setPosts] = useState([]);
+  const [photos, setPhotos] = useState([])
 
-  useEffect(()=>{
-    axios.get("https://randomuser.me/api/?results=50")
-    .then(response => { 
-      setFriendsList(response.data.results);
+  function addPost(newPost){
+    setPosts(prevPosts =>{
+     return [newPost, ...prevPosts ]
+    })
+    fetch("http://localhost:8000/posts/", {
+      method: "POST",
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify(newPost)
+    })
+  }
+
+  function addPhoto(newPhoto){
+    setPhotos((prevItems)=>{
+      return [...prevItems, newPhoto];
+    });
+    fetch("http://localhost:8000/photos/", {
+      method: "POST",
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify(newPhoto)
+    })
+  }
+
+   function deletePost(id){
       
-    })
-    .catch(error =>{
-      console.log(error);
-    })
-  }, [])
+      setPosts(prevPosts =>{
+        return prevPosts.filter((postItem)=> {
+          return postItem.id !== id;
+        })
+      })
+
+      setUsersPosts(prevPosts =>{
+        return prevPosts.filter((postItem)=> {
+          return postItem.id !== id;
+        })
+      })
+
+      fetch("http://localhost:8000/posts/"+id, {
+        method: "DELETE",
+      })
+    
+    }
 
 
-//   const fetchData = () =>{
-//     const usersAPI = "https://randomuser.me/api/?results=50"
-//     const imagesAPI = "https://picsum.photos/v2/list?limit=10"
+  const fetchData = () =>{
+    const usersAPI = "http://localhost:8000/users"
+    const postsAPI = "http://localhost:8000/posts"
+    const commentsAPI = "http://localhost:8000/comments"
+    const photosAPI = "http://localhost:8000/photos"
 
-//     const getUser = axios.get(usersAPI)
-//     const getImage = axios.get(imagesAPI);
+    const getUsers = axios.get(usersAPI)
+    const getPosts = axios.get(postsAPI);
+    const getComments = axios.get(commentsAPI);
+    const getPhotos = axios.get(photosAPI)
 
-// axios.all([getUser, getImage]).then(
-//   axios.spread((...allData)=>{
-//     const allDataUser = allData[0]
-//     const allDataImage = allData[1]
+axios.all([getUsers, getPosts, getComments, getPhotos]).then(
+  axios.spread((...allData)=>{
+    const allDataUsers = allData[0];
+    const allDataPosts= allData[1];
+    const allDataComments= allData[2];
+    const allDataPhotos = allData[3];
 
-//     setFriendsList(allDataUser.data.results);
-//     setPhotoGallery(allDataImage.data)
+
     
 
-//   })
-// )
-// }
+    setFriendsList(allDataUsers.data.reverse());
+    setUsersPosts(allDataPosts.data.reverse());
+    setUsersComments(allDataComments.data);
+    setUsersPhotos(allDataPhotos.data.reverse());
+    
+
+  })
+)
+}
 
 
-  // useEffect(() => {
-  //   fetchData()
-  // },[])
+  useEffect(() => {
+    fetchData()
+  },[])
+
+  
 
 
   return (<>
   <ThemeProvider theme={theme}>
    <Router>
-   <Nav/>
     <Switch>
-    <Route path="/" exact render={() => <LoginPage  />}/>
-    <Route path="/posts" render={() => <PostsPage  />}/>
-    <Route path="/friends" exact render={() => <Friends  friendsList={friendsList} />}/>
-    <Route path="/photos" render={() => <Photos photoGallery={photoGallery} />}/>
-    <Route path="/friends/:username" render={() => <Wall  friendsList={friendsList} />}/>
+    <Route path="so-me/" exact render={() => <LoginPage friendsList={friendsList} />}/>
+    <Route path="so-me/posts" exact render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
+    <Route path="so-me/friends" exact render={() => <Friends  friendsList={friendsList} />}/>
+    <Route path="so-me/photos" render={() => <Photos addPhoto={addPhoto} photos={photos} usersPhotos={usersPhotos}/>}/>
+    <Route path="so-me/posts/:postId"  render={() => <PostsPage usersPosts={usersPosts} posts={posts} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments} addPost={addPost} deletePost={deletePost} />}/>
+    <Route path="so-me/friends/:username" render={() => <Wall friendsList={friendsList} usersPosts={usersPosts} usersPhotos={usersPhotos} usersComments={usersComments} setUsersPosts={setUsersPosts} setUsersComments={setUsersComments}  />}/>
+    <Route path="so-me/logout" render={() => <LogoutPage/>}/>
     </Switch>
     
     </Router> 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {Typography, List, ListItem, ListItemText, ListItemAvatar} from "@material-ui/core"
-import {makeStyles} from "@material-ui/core/styles"
+import {Typography, List, ListItem, Avatar} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
 import MenuTwoToneIcon from '@material-ui/icons/MenuTwoTone';
 
 
@@ -29,16 +29,19 @@ const useStyles = makeStyles({
         borderRadius: "10px",
         padding: "15px",
         margin: "5px 10px 5px 5px",
+        justifyContent: "space-between",
         "&:hover" : {
         backgroundColor: "dodgerblue",
         transition: "ease-in",
         transitionDuration: "150ms",
         color: "white",
+        
        
         }
     },
      navIcon : {
       width: "25px",
+      height: "25px",
       position: "absolute",
       marginRight: "5px",
       right: "0",
@@ -63,14 +66,27 @@ const useStyles = makeStyles({
         top: "0",
         left: "0",
         zIndex: "101",
-        fontSize:"40px"
+        fontSize:"40px",
+        
+    },
+    navImg:{
+        margin: "auto"
+    },
+
+    navBtnText:{
+        fontFamily: "Roboto",
+        fontWeight: "600"
     }
+
   })
 
 const Nav = () => {
 
    const classes = useStyles();
 
+ const currentUser = JSON.parse(localStorage.getItem("myuser"));
+
+ 
 const [isMenuVisible, setMenuVisible] = useState(true)
 
 const hideShowMenu = () =>{
@@ -93,28 +109,31 @@ const hideShowMenu = () =>{
         <div style={{display: isMenuVisible ? "inline-block" : "none"}} className={classes.nav}>
        
         <Typography variant="h2" className={classes.navHeading} >So-Me</Typography>
+        <Avatar className={classes.navImg} src={currentUser.picture.medium} alt=""/>
+        <Typography variant="subtitle1">{currentUser.login.username}</Typography>
+        
             <List className={classes.navBtnList}>
                 
                   
               
             <Link to="/friends" style={{ textDecoration: 'none', color:"dodgerblue"}} >
             <ListItem className={classes.navBtn}> 
-           <Typography>Friends <img className="link-icon" src="images/friends.svg" alt="" className={classes.navIcon}/></Typography>  
+           <Typography className={classes.navBtnText}>Friends </Typography>  <i className="fas fa-user-friends"></i>
             </ListItem>
             </Link>
             <Link to="/posts" style={{ textDecoration: 'none', color:"dodgerblue" }}>   
             <ListItem className={classes.navBtn}>  
-            <Typography>Posts <img className="link-icon" src="images/social-media.svg" alt="" className={classes.navIcon}/></Typography> 
+            <Typography className={classes.navBtnText}>Posts </Typography> <i className="far fa-newspaper"></i>
             </ListItem>
             </Link>
             <Link to ="/photos" style={{ textDecoration: 'none', color:"dodgerblue" }}>
             <ListItem className={classes.navBtn}>
-          <Typography> Photos <img className="link-icon" src="images/gallery.svg" alt="" className={classes.navIcon} /></Typography> 
+          <Typography className={classes.navBtnText}> Photos </Typography> <i className="fas fa-images"></i>
             </ListItem>
             </Link>
            <Link to="/logout" style={{ textDecoration: 'none', color:"dodgerblue" }}>
            <ListItem className={classes.navBtn} style={{marginTop: "50vh" }}> 
-           <Typography> Logout <img className="link-icon" src="images/logout.svg" alt="" className={classes.navIcon}/></Typography>
+           <Typography className={classes.navBtnText}> Logout </Typography> <i className="fas fa-sign-out-alt"></i>
            </ListItem>
            </Link>
             </List>

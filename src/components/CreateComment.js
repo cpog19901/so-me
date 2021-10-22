@@ -4,12 +4,22 @@ import { Button, TextField } from "@material-ui/core"
 
 const CreateComment = (props) =>{
 
+    const currentDate = new Date().toLocaleString();
+
+    const currentUser = JSON.parse(localStorage.getItem("myuser"));
+
+const commentOwner =props.commentBelongsTo;
+
 
     // set comment content to blank string
     const[comment, setComment] = useState({
         id: uuidv4(),
-        commentContent: ""
-    })
+        commentContent: "",     
+        commentOwner: commentOwner,
+        commentPostedBy : currentUser.login.username,
+        commentAvatar: currentUser.picture.medium,
+        commentTimestamp: currentDate
+    });
 
 
     //submitComment function will prevent refresh add the comment to the comments array and 
@@ -18,9 +28,13 @@ const CreateComment = (props) =>{
         e.preventDefault();
         setComment({
             id: uuidv4(),
-            commentContent: ""
+            commentContent: "",
+            commentOwner: commentOwner,   
+            commentPostedBy : currentUser.login.username,
+            commentAvatar: currentUser.picture.medium,
+            commentTimestamp: currentDate
         });
-    }
+    };
 
         //get name and value of the event and then update "content" value in comment state
     const handleChangeComment =(event) =>{
@@ -32,7 +46,7 @@ const CreateComment = (props) =>{
                 [name]:value
             };
         });
-    }    
+    };    
 
 
     

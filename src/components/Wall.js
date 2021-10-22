@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {useParams} from "react-router-dom"
-import {Paper, Tabs, Tab, Box} from "@material-ui/core"
+import {useParams, Link} from "react-router-dom"
+import {Paper, Tabs, Tab, Box, Typography, Grid} from "@material-ui/core"
+import PostsPage from "../components/PostsPage"
 import { makeStyles } from '@material-ui/core/styles';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -20,29 +22,34 @@ const useStyles = makeStyles({
             fontWeight: "bold"
         },
         paper:{
-            width: "75%",
+            width: "500px",
             margin:"auto",
-            borderRight: "2px solid dodgerblue",
-            borderLeft: "2px solid dodgerblue",
+          
          
         },
         img:{
-            borderRadius: "50%"
+            borderRadius: "25%"
         }
 
 
     
 });
 
-const Wall = ({friendsList}) => {
+const Wall = ({friendsList, usersPosts, usersPhotos, usersComments, setUsersPosts, setUsersComments}) => {
+
+
+   
 
 let {username} = useParams();
 
+
+const randomId =uuidv4()
 
 const classes = useStyles();
 
 
 const [value, setValue] = useState('one');
+const [wallOwner, setWallOwner] = useState(username) 
 
 const handleChange = (event, newValue) => {
   setValue(newValue);
@@ -52,7 +59,11 @@ const handleChange = (event, newValue) => {
 
     return (
         <div>
-            <h1>Wall</h1>
+            
+
+
+            
+            <Typography variant="h2">Wall</Typography>
             {    friendsList.filter(friend =>{
                 if(friend.login.username === username)
                 return friend;
@@ -65,12 +76,26 @@ const handleChange = (event, newValue) => {
             
 
                 return(
+
                     
-                    <Paper key={i} id={i} className={classes.paper}><h2 >{friendDetails.login.username}</h2>
+                    
+                  
+                    <Paper key={randomId} id={randomId} className={classes.paper}><Typography variant="h3">{friendDetails.name.first + " " + friendDetails.name.last} </Typography>
+                    <Grid container>
+                    <Grid item xs={6}>
+                    <Box>
+                    <Typography variant="h6">{friendDetails.login.username} </Typography>
                     <img className={classes.img} src={friendDetails.picture.large} alt="" />
-                    <h2>{friendDetails.location.state + ", " +friendDetails.location.country}</h2>
+                    </Box>
+                    </Grid>
+                   
+                    <Grid item xs={6}>
+                    <Typography>{friendDetails.location.state + ", " +friendDetails.location.country}</Typography>
                     <img  src={fullUri} alt="" />
+                    </Grid>
+                    </Grid>
                     <Box sx={{ width: '100%' }}>
+                  
                     <Tabs
                         value={value}
                         onChange={handleChange}
@@ -80,15 +105,46 @@ const handleChange = (event, newValue) => {
                         className={classes.tabs}
                         
                     >
-                        <Tab className={classes.tab} value="one" label="Posts" />
+                        <Tab className={classes.tab} value="one" label="Posts"/>
+
+                       
                         <Tab className={classes.tab} value="two" label="Photos" />
+                       
                         <Tab className={classes.tab} value="three" label="Friends" />
+                      
                     </Tabs>
+                        { value ==="one" ? usersPosts.filter(userPost =>{
+                            if(userPost.posterUsername === username){
+                            return userPost;
+                            }
+                        }).map(userPost=>{
+                            return(
+                               <Link key={userPost.id} id={userPost.id} to={`/posts/${userPost.id}`} style={{textDecoration:"none"}}> <Typography  variant="h6" >{userPost.title}</Typography></Link>
+                            )
+                        }) : null}
+
+                        { value ==="two" ? usersPhotos.filter((userPhoto)=>{
+                            console.log(userPhoto.photoUploader);
+                            if(userPhoto.photoUploader === username){
+                                return userPhoto;
+                            }
+                        }).map(userPhoto=>{
+                            return(
+                                <Box style={{display: "flex"}}>
+                                
+                               <img style={{width: "100%"}} src={userPhoto.imageURL} alt="" />
+                              
+                               </Box>
+                            )
+                        }) : null}
+
+                        
+                    
+                  
                     </Box>
                    </Paper>
 
-                 
-                
+            
 
                 )
             })}
