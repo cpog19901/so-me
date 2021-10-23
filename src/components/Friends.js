@@ -90,7 +90,7 @@ const Friends = ({friendsList}) => {
             return(
                 <Grid  key={i} id={i}  item xs={6}  md={6} lg={4}> 
                     
-                <Link style={{ textDecoration: 'none' }} to={`/friends/${friend.login.username}`}>  
+                <Link style={{ textDecoration: 'none' }} to={`/so-me/friends/${friend.login.username}`}>  
                 <Paper className={classes.box}>
                 <img className={classes.profilePic} src={friend.picture.large} alt="" />
                <Typography className={classes.name} variant="h4" component="h4"> {friend.name.first + " " + friend.name.last}</Typography>

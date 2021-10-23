@@ -19,7 +19,7 @@ const LogoutPage = () => {
     localStorage.clear();
 
     var timer = setTimeout(function() {
-        window.location='http://localhost:3000/'
+        window.location='https://cpog19901.github.io/so-me'
     }, 3000);
 
 const classes = useStyles();

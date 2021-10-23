@@ -42,7 +42,7 @@ const Wall = ({friendsList, usersPosts, usersPhotos, usersComments, setUsersPost
 
 let {username} = useParams();
 
-
+console.log(username);
 const randomId =uuidv4()
 
 const classes = useStyles();
@@ -119,7 +119,7 @@ const handleChange = (event, newValue) => {
                             }
                         }).map(userPost=>{
                             return(
-                               <Link key={userPost.id} id={userPost.id} to={`/posts/${userPost.id}`} style={{textDecoration:"none"}}> <Typography  variant="h6" >{userPost.title}</Typography></Link>
+                               <Link key={userPost.id} id={userPost.id} to={`/so-me/posts/${userPost.id}`} style={{textDecoration:"none"}}> <Typography  variant="h6" >{userPost.title}</Typography></Link>
                             )
                         }) : null}
 

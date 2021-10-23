@@ -116,22 +116,22 @@ const hideShowMenu = () =>{
                 
                   
               
-            <Link to="/friends" style={{ textDecoration: 'none', color:"dodgerblue"}} >
+            <Link to="/so-me/friends" style={{ textDecoration: 'none', color:"dodgerblue"}} >
             <ListItem className={classes.navBtn}> 
            <Typography className={classes.navBtnText}>Friends </Typography>  <i className="fas fa-user-friends"></i>
             </ListItem>
             </Link>
-            <Link to="/posts" style={{ textDecoration: 'none', color:"dodgerblue" }}>   
+            <Link to="/so-me/posts" style={{ textDecoration: 'none', color:"dodgerblue" }}>   
             <ListItem className={classes.navBtn}>  
             <Typography className={classes.navBtnText}>Posts </Typography> <i className="far fa-newspaper"></i>
             </ListItem>
             </Link>
-            <Link to ="/photos" style={{ textDecoration: 'none', color:"dodgerblue" }}>
+            <Link to ="/so-me/photos" style={{ textDecoration: 'none', color:"dodgerblue" }}>
             <ListItem className={classes.navBtn}>
           <Typography className={classes.navBtnText}> Photos </Typography> <i className="fas fa-images"></i>
             </ListItem>
             </Link>
-           <Link to="/logout" style={{ textDecoration: 'none', color:"dodgerblue" }}>
+           <Link to="/so-me/logout" style={{ textDecoration: 'none', color:"dodgerblue" }}>
            <ListItem className={classes.navBtn} style={{marginTop: "50vh" }}> 
            <Typography className={classes.navBtnText}> Logout </Typography> <i className="fas fa-sign-out-alt"></i>
            </ListItem>
