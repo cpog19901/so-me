@@ -43,8 +43,8 @@ const uploadImage = (e) =>{
     formData.append("upload_preset", "iq5xsc7g")
 
     Axios.post("https://api.cloudinary.com/v1_1/dly13wqwx/image/upload", formData).then((response)=>{
-      
-      const photoURL = response.data.url;
+      console.log(response.data)
+      const photoURL = response.data.secure_url;
       const photoId = response.data.asset_id;
       const newPhoto = {
           imageId: photoId,
