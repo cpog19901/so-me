@@ -98,7 +98,7 @@ const uploadImage = (e) =>{
           <ImageListItem key={item.imageId} id={item.imageId}>
             <img
               src={`${item.imageURL}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.ImageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              srcSet={`${item.imageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item}
               loading="lazy"
             />
