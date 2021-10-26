@@ -10,8 +10,11 @@ import { useHistory} from "react-router-dom"
 
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>{
+
+    return {
     image1:{
+
         backgroundImage: `url(${image})`,
         backgroundPosition: 'bottom', 
         backgroundSize: 'cover', 
@@ -33,10 +36,13 @@ const useStyles = makeStyles({
     loginPaper:{
         padding: "25px",
         maxWidth: "350px",
-        margin: "auto",  
+        margin: "50px auto",  
         alignItems: "center", 
         marginTop:"25px",
-        backgroundColor: "aliceblue"     
+        backgroundColor: "aliceblue",
+        [theme.breakpoints.down("sm")]:{
+           
+        }     
     },
 
     btn:{
@@ -112,7 +118,7 @@ const useStyles = makeStyles({
        margin: "auto"
     }
 
-
+    }
 
 })
 
@@ -160,10 +166,12 @@ const classes = useStyles();
 
     return(
         
-      
+      <>
         
-        <Grid container >
-        <Grid item xs={12} sm={6}>
+        <Grid container>
+        <Box clone order={{ xs: 2 , md: 1}}>
+
+        <Grid item xs={12} md={6}>
       <div id="image-holder" className={classes.image1}>
         <div id="overlay" className={classes.overlay}>
             
@@ -173,13 +181,12 @@ const classes = useStyles();
         <Typography className={classes.imgTextMiddle}>...that's free from ads</Typography>
         <Typography className={classes.imgTextLower}>and much more personal!</Typography>
         </div>
-      </div>
-       
-      
-    
-        
+      </div>        
         </Grid>
-        <Grid item xs={12} sm={6} className={classes.grid}>
+        </Box>
+
+        <Box clone order={{ xs: 1 , md: 2}}>
+        <Grid item xs={12} md={6} className={classes.grid}>
         
          <Paper className={classes.loginPaper} >
          <Typography variant="h1">So-Me</Typography>
@@ -193,10 +200,10 @@ const classes = useStyles();
        
          </Paper>
         </Grid>
-      
+      </Box>
        
       </Grid>
-
+</>
       
    
     )
