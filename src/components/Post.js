@@ -10,7 +10,8 @@ const currentUser = JSON.parse(localStorage.getItem("myuser"));
 
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>{
+  return{
     postContent:{
      fontFamily: ['Roboto','sans-serif'].join(),
      fontWeight: "600",
@@ -32,7 +33,10 @@ const useStyles = makeStyles({
     borderRadius: "10px",
     backgroundColor: "darkcyan",
     whiteSpace: "nowrap",
-    fontFamily: "Roboto"
+    fontFamily: "Roboto",
+    [theme.breakpoints.down("sm")]:{
+      left: "50%"
+}   
     },
 
     name:{
@@ -56,7 +60,8 @@ const useStyles = makeStyles({
       padding: "30px",
       textAlign: "justify",
       marginBottom: "20px",
-      position: "relative"
+      position: "relative",
+      backgroundImage: `url(${"./images/skulls.png"})`,
     },
     delIcon:{
      top: "0",
@@ -64,7 +69,7 @@ const useStyles = makeStyles({
      position: "absolute",
      transform: "translateY(-50%)"
     }
-
+  }
 
 }) 
 

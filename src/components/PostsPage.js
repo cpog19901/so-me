@@ -3,16 +3,26 @@ import CreatePost from "../components/CreatePost"
 import Post from "../components/Post"
 import Nav from "../components/Nav"
 import {makeStyles} from "@material-ui/core/styles"
-import {Typography} from "@material-ui/core"
+import {Typography, Box} from "@material-ui/core"
 import {useParams, Link} from "react-router-dom"
 
 const useStyles=makeStyles({
   postsTitle : {
-    backgroundColor:"aliceblue",
     padding: "20px",
     borderRadius: "10px",
+    backgroundColor: "aliceblue"
   },
-  
+  titleContainer:{
+    width: "100%",
+    backgroundSize: "cover",
+    backgroundImage: `url(./images/newsfeed.png)`,
+    height: "200px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "0 0 50px 0"
+}
+    
 })
 
 const PostsPage = ({ usersPosts, usersComments, setUsersPosts, setUsersComments, addPost, deletePost, posts}) =>{
@@ -28,50 +38,6 @@ const currentUser = JSON.parse(localStorage.getItem("myuser"));
     const [posterUsername, setPosterUsername]=useState(currentUser.login.username)
     const [avatar, setAvatar] = useState(currentUser.picture.medium)
 
-   
-
-    // addPost function sets the state of posts to return previous submitted posts and the latest post
-
-    // function addPost(newPost){
-
-      
-  
-    //   setPosts(prevPosts =>{
-    //    return [newPost, ...prevPosts ]
-    //   })
-        
-    //   fetch("http://localhost:8000/posts/", {
-    //     method: "POST",
-    //     headers: {"Content-type": "application/json"},
-    //     body: JSON.stringify(newPost)
-    //   })
-
-
-
-    // }
-    
-    // deletePost function sets the state of posts to return filtered items in the array where the id is not equal to index. 
-
-    // function deletePost(id){
-      
-    //   setPosts(prevPosts =>{
-    //     return prevPosts.filter((postItem)=> {
-    //       return postItem.id !== id;
-    //     })
-    //   })
-
-    //   setUsersPosts(prevPosts =>{
-    //     return prevPosts.filter((postItem)=> {
-    //       return postItem.id !== id;
-    //     })
-    //   })
-
-    //   fetch("http://localhost:8000/posts/"+id, {
-    //     method: "DELETE",
-    //   })
-    
-    // }
-
     let {postId} = useParams();
     console.log(postId)
   
@@ -85,12 +51,13 @@ const currentUser = JSON.parse(localStorage.getItem("myuser"));
       
       
       <div className="posts-container">
-      <div className="posts-heading-container">
-      <Typography className={classes.postsTitle} variant="h3">Posts</Typography>
-    
+      <Box className={classes.titleContainer}>
+      
+      <Typography className={classes.postsTitle} variant="h4">Newsfeed</Typography>
+      </Box>
  
      
-      </div>
+      
       
     {postId === undefined ? <CreatePost 
         onAdd ={addPost}

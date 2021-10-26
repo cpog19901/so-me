@@ -74,8 +74,10 @@ const Friends = ({friendsList}) => {
         <>
         <Nav/>
         <div className={classes.bg}>
-        <Typography variant="h2">Friends</Typography>
+       
+        <Typography variant="h4">Friends</Typography>
         <TextField onChange={handleSearch} placeholder="Search for a friend"/>
+       
  <Grid container spacing={3} alignItems="center" className={classes.grid} >
     
 
@@ -105,7 +107,7 @@ const Friends = ({friendsList}) => {
         })}
            
         </Grid>
-        <Button className ={classes.btn} onClick={handleClick}>Load more...</Button>
+ 
            
         </div>
         </>

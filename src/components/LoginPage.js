@@ -116,6 +116,13 @@ const useStyles = makeStyles((theme) =>{
         zIndex: "30",
         width:"100%",
        margin: "auto"
+    },
+
+    logo:{
+        fontFamily:"Fredoka One, Roboto"
+    },
+    error:{
+        fontFamily: "Fredoka One"
     }
 
     }
@@ -189,9 +196,9 @@ const classes = useStyles();
         <Grid item xs={12} md={6} className={classes.grid}>
         
          <Paper className={classes.loginPaper} >
-         <Typography variant="h1">So-Me</Typography>
+         <Typography className={classes.logo} variant="h1">So-Me</Typography>
             <Typography className={classes.subtitle} variant="subtitle1">Connect with your friends without anything getting in your way!</Typography>
-            {error ? <Typography variant ="subtitle1">Incorrect username and/or password</Typography> : null}
+            {error ? <Typography className={classes.error}variant ="subtitle1">Incorrect username and/or password</Typography> : null}
             <form action="">
             <Input className={classes.input} fullWidth placeholder="Username" onChange={handleCreds} name="username" value={creds.username}/>
             <Input type="password" className={classes.input} fullWidth placeholder="Password" onChange={handleCreds} name="password" value ={creds.password}/>

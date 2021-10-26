@@ -19,13 +19,18 @@ const theme = createTheme({
  
   typography: {
     fontFamily: [
-      'Fredoka One', 
+      'Roboto', 
       "cursive"
     ].join(",")
   },
 
   body1:{
     fontFamily: ['Roboto','sans-serif'].join(),
+  },
+  palette: {
+    primary: {
+      main: "#1E90FF"
+    }
   }
 })
 
@@ -40,6 +45,8 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [photos, setPhotos] = useState([])
 
+
+  // addPost function sets the state of posts to return previous submitted posts and the latest post
   function addPost(newPost){
     setPosts(prevPosts =>{
      return [newPost, ...prevPosts ]
@@ -51,6 +58,29 @@ function App() {
     })
   }
 
+// deletePost function sets the state of posts to return filtered items in the array where the id is not equal to index. 
+
+  function deletePost(id){
+      
+    setPosts(prevPosts =>{
+      return prevPosts.filter((postItem)=> {
+        return postItem.id !== id;
+      })
+    })
+
+    setUsersPosts(prevPosts =>{
+      return prevPosts.filter((postItem)=> {
+        return postItem.id !== id;
+      })
+    })
+
+    fetch("https://so-me-db.herokuapp.com/posts"+id, {
+      method: "DELETE",
+    })
+  
+  }
+
+  
   function addPhoto(newPhoto){
     setPhotos((prevItems)=>{
       return [...prevItems, newPhoto];
@@ -62,25 +92,7 @@ function App() {
     })
   }
 
-   function deletePost(id){
-      
-      setPosts(prevPosts =>{
-        return prevPosts.filter((postItem)=> {
-          return postItem.id !== id;
-        })
-      })
-
-      setUsersPosts(prevPosts =>{
-        return prevPosts.filter((postItem)=> {
-          return postItem.id !== id;
-        })
-      })
-
-      fetch("https://so-me-db.herokuapp.com/posts"+id, {
-        method: "DELETE",
-      })
-    
-    }
+   
 
 
   const fetchData = () =>{

@@ -1,9 +1,25 @@
 import React, {useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Button, TextField } from "@material-ui/core"
+import {makeStyles} from "@material-ui/core/styles" 
+
+const useStyles = makeStyles({
+
+   submitCommentBtn:{
+       margin: "10px 0", 
+       backgroundColor: "dodgerblue", 
+       color: "white",
+       "&:hover": {
+        backgroundColor: 'dodgerblue'
+      }
+
+   }
+   
+})
 
 const CreateComment = (props) =>{
 
+    const classes = useStyles();
     const currentDate = new Date().toLocaleString();
 
     const currentUser = JSON.parse(localStorage.getItem("myuser"));
@@ -66,11 +82,10 @@ const commentOwner =props.commentBelongsTo;
         onChange={handleChangeComment}>
         </TextField>
         <Button 
-        className="submit-btn"
+        className={classes.submitCommentBtn}
         name="submit-comment" 
         type="submit" 
         variant="contained"
-        color="primary"
         onClick={submitComment}>Submit comment</Button>
         </form>
         </div>

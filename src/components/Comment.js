@@ -5,7 +5,8 @@ import { Paper, Button, Typography, Avatar } from "@material-ui/core"
 import {makeStyles} from "@material-ui/core/styles"
 import { MdDeleteForever} from "react-icons/md";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>{
+  return{
     postContent:{
      fontFamily: ['Roboto','sans-serif'].join(),
      fontWeight: "600",
@@ -37,7 +38,8 @@ const useStyles = makeStyles({
       padding: "30px",
       textAlign: "justify",
       marginBottom: "20px",
-      position: "relative"
+      position: "relative",
+      backgroundImage: `url(${"./images/skulls.png"})`,
     },
 
     commentHolder:{
@@ -61,8 +63,12 @@ const useStyles = makeStyles({
     borderRadius: "10px",
     backgroundColor: "darkcyan",
     whiteSpace: "nowrap",
-    },
-
+    fontFamily: "Roboto, cursive",
+    [theme.breakpoints.down("sm")]:{
+           left: "50%"
+    }   
+    }
+  }
 
 }) 
 

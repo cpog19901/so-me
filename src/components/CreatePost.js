@@ -6,11 +6,15 @@ import {makeStyles} from "@material-ui/core/styles"
 const useStyles = makeStyles({
     submitBtn:{
         margin: "25px",
-        backgroundColor: "dodgerblue"
+        backgroundColor: "dodgerblue", 
+        color: "white",
+        "&:hover": {
+            backgroundColor: 'dodgerblue'
+          }
     },
     textBox:{
         backgroundColor:"aliceblue",
-    
+        margin: "10px 0"
       }
 })
 
@@ -96,7 +100,7 @@ const currentDate = new Date().toLocaleString();
                 className={classes.textBox}
                 
                 />
-                <Button className={classes.submitBtn} color="primary" variant="contained" size="medium" name="submit-post" type="submit" onClick={submitPost}>Submit post</Button>
+                <Button className={classes.submitBtn}  variant="contained" size="medium" name="submit-post" type="submit" onClick={submitPost}>Submit post</Button>
             </form>
             
         </div>
