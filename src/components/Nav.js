@@ -5,7 +5,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import MenuTwoToneIcon from '@material-ui/icons/MenuTwoTone';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( theme => { 
+    return {
     nav:{
     position: "fixed",
     height: "100vh",
@@ -77,7 +78,7 @@ const useStyles = makeStyles({
         fontFamily: "Roboto",
         fontWeight: "600"
     }
-
+    }
   })
 
 const Nav = () => {
@@ -87,7 +88,7 @@ const Nav = () => {
  const currentUser = JSON.parse(localStorage.getItem("myuser"));
 
  
-const [isMenuVisible, setMenuVisible] = useState(true)
+const [isMenuVisible, setMenuVisible] = useState(false)
 
 const hideShowMenu = () =>{
 

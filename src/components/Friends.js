@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     },
     profilePic:{
         borderRadius: 20,
+        width: "75%"
     },
     grid:{
         padding: 50
@@ -88,12 +89,12 @@ const Friends = ({friendsList}) => {
         }).map((friend, i)=>{
             if(friend.login.username != currentUser.login.username)
             return(
-                <Grid  key={i} id={i}  item xs={6}  md={6} lg={4}> 
+                <Grid  key={i} id={i}  item xs={12}  sm={6} lg={4}> 
                     
                 <Link style={{ textDecoration: 'none' }} to={`/so-me/friends/${friend.login.username}`}>  
                 <Paper className={classes.box}>
                 <img className={classes.profilePic} src={friend.picture.large} alt="" />
-               <Typography className={classes.name} variant="h4" component="h4"> {friend.name.first + " " + friend.name.last}</Typography>
+               <Typography className={classes.name} variant="h6"> {friend.name.first + " " + friend.name.last}</Typography>
                <Typography variant="body1" className={classes.email}>{friend.email}</Typography>
                 </Paper>
                 </Link>
