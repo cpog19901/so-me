@@ -170,7 +170,7 @@ return(<>
      
         <Box className={classes.profileInfo} >
          <Avatar className={classes.avatar} src={props.avatar} alt=""/>
-         <Typography className={classes.name} variant="h5">{props.posterUsername}</Typography>
+         <Typography className={classes.name} variant="h6">{props.posterUsername}</Typography>
          </Box>
         <Paper className={classes.contentBox} elevation ={12}>
       { props.posterUsername === currentUser.login.username ? <TiDelete className={classes.delIcon} style={{cursor: "pointer", fontSize: "40px", color:"#bd1604"}} onClick={handleClick}/> : null}

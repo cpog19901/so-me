@@ -6,11 +6,14 @@ import {makeStyles} from "@material-ui/core/styles"
 import {Typography, Box} from "@material-ui/core"
 import {useParams, Link} from "react-router-dom"
 
-const useStyles=makeStyles({
-  postsTitle : {
+const useStyles=makeStyles(theme=>{
+
+  return{
+    postsTitle : {
     padding: "20px",
     borderRadius: "10px",
-    backgroundColor: "aliceblue"
+    backgroundColor: "aliceblue",
+    fontFamily: "Fredoka One"
   },
   titleContainer:{
     width: "100%",
@@ -21,8 +24,16 @@ const useStyles=makeStyles({
     alignItems: "center",
     justifyContent: "center",
     margin: "0 0 50px 0"
+},
+mainPage:{
+  display:"flex",
+  margin: "auto",
+[theme.breakpoints.up("sm")]:{
+  width: "500px"
 }
-    
+  
+}
+}
 })
 
 const PostsPage = ({ usersPosts, usersComments, setUsersPosts, setUsersComments, addPost, deletePost, posts}) =>{
@@ -46,7 +57,7 @@ const currentUser = JSON.parse(localStorage.getItem("myuser"));
     <div>
    <Nav/>
      
-      <div className="main-page">
+      <div className={classes.mainPage}>
      
       
       

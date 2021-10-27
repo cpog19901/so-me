@@ -87,7 +87,7 @@ return(
   <div className={classes.commentHolder}>
   <div className={classes.profileInfo}>
   <Avatar className={classes.avatar} src={props.commentAvatar} alt=""/>
-  <Typography className={classes.name} variant="h5">{props.commentPostedBy}</Typography>
+  <Typography className={classes.name} variant="h6">{props.commentPostedBy}</Typography>
   </div>
  <Paper className={classes.contentBox} elevation ={12}>
  {currentUser.login.username === props.commentPostedBy ? <TiDelete className={classes.delIcon} style={{cursor: "pointer", fontSize: "40px", color:"#bd1604"}} onClick={handleClick}/> : null}

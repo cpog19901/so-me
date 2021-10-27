@@ -9,10 +9,24 @@ import {Typography, ImageList, ImageListItem, Box, Button, Card} from "@material
 const useStyles = makeStyles({
   input:{
     
-    margin: "auto",
+    margin: "10px auto",
     padding: "10px",
     borderRadius: "10px",
-    fontFamily: "Roboto, cursive"
+    fontFamily: "Roboto, cursive",
+    display:"block"
+  },
+
+  photosTitle:{
+   fontFamily: "Fredoka One"
+  },
+
+  photosContainer:{
+    width: "500px",
+    margin: "auto"
+  },
+
+  uploadBtn:{
+    margin: "10px"
   }
   
   })
@@ -64,19 +78,27 @@ const uploadImage = (e) =>{
     return (
         <div>
         <Nav/>
-            <Typography variant="h2">Photos</Typography>
+        <Box className={classes.photosContainer}>
         
-
+            <Typography className={classes.photosTitle} variant="h2">Photos</Typography>
         
             
-      
-    <input className={classes.input} type="file" onChange={((event)=>{
+        
+            
+            <Typography  variant="body1">Image name: {imageSelected.name}</Typography>
+    <input style={{display: "none"}} id="contained-button-file" className={classes.input} type="file" onChange={((event)=>{
   setImageSelected(event.target.files[0]);
 })} />
 
-<Button variant="contained" color="primary" type="submit" onClick={uploadImage}>Upload image</Button>
+<label htmlFor="contained-button-file"> 
+   <Button variant="contained" component="span"> 
+     Choose File
+   </Button> 
+ </label> 
 
-<Box sx={{ width: 800, height: 900, overflowY: 'scroll', margin:"auto" }}>
+<Button className={classes.uploadBtn} variant="contained" color="primary" type="submit" onClick={uploadImage}>Upload image</Button>
+
+<Box sx={{ width: "100%", height: 900, overflowY: 'scroll', margin:"auto" }}>
 
       <ImageList variant="masonry" cols={3} gap={10}>
         {photos.map((item) => (
@@ -107,7 +129,7 @@ const uploadImage = (e) =>{
       </ImageList>
      
     </Box>
-
+</Box>
   
         </div>
     );

@@ -18,10 +18,12 @@ const useStyles = makeStyles( theme => {
     padding: "0 10px",
     backgroundColor: "aliceblue",
     width: "225px",
+    
     },
 
     navHeading:{
-        marginTop: "50px"
+        marginTop: "50px",
+        fontFamily: "Fredoka One"
     },
 
     navBtn:
