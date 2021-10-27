@@ -43,13 +43,14 @@ const useStyles = makeStyles(theme=>{
         fontFamily: ['Roboto','sans-serif'].join(),
     },
     friendsContainer:{
-        padding: "4%",
+        padding: "1%",
         width: "500px",
         margin: "auto",
         [theme.breakpoints.down("sm")]:{
-          width: "100%"
+          width: "90%",
+          padding: "0"
         },
-        backgroundColor: "whitesmoke",
+        backgroundColor: "white",
         // boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)"
     },
 

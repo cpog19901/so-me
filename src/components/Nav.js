@@ -70,6 +70,7 @@ const useStyles = makeStyles( theme => {
         left: "0",
         zIndex: "101",
         fontSize:"40px",
+        color: "whitesmoke"
         
     },
     navImg:{

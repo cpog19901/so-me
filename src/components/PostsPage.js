@@ -28,7 +28,7 @@ const useStyles=makeStyles(theme=>{
     margin: "auto",
     padding: "4%",
     [theme.breakpoints.down("sm")]:{
-      width: "100%"
+      width: "90%"
     },
     backgroundColor: "white"
   } 

@@ -5,17 +5,16 @@ body{
   overflow-x: hidden;
   color: #3a7bd5;
  
-  background: #4AC29A;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #BDFFF3, #4AC29A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png"),  linear-gradient(to right, dodgerblue, dodgerblue);
+  background-color: dodgerblue;
+  background-image: url("https://www.transparenttextures.com/patterns/tree-bark.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   
   
 
 }
 
 .login-img{
-  background-image: url("../src/images/login-img.jpg");
+  /* background-image: url("../src/images/main.svg"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;

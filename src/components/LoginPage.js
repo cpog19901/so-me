@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Grid, Tabs, Tab, Box, Paper, Input, Button, Typography} from "@material-ui/core"
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
-import image from '../images/login-img.jpg'; // Import using relative path
+import image from '../images/main.svg' // Import using relative path
 import skulls from "../images/skulls.png"
 import { useHistory} from "react-router-dom"
 
@@ -65,13 +65,14 @@ const useStyles = makeStyles((theme) =>{
         position: "absolute",
         top: "0",
         left: "0",
-        backgroundImage: `url(${skulls})`,
+        // backgroundImage: `url(${skulls})`,
         width: "100%",
         height: "100%",
         zIndex: "20",
         backgroundRepeat: 'repeat',
         backgroundColor: "#008c8c",
-        mixBlendMode: "color-burn"
+        mixBlendMode: "color-burn",
+        borderRight: "4px solid white"
     },
 
     imgText:{
@@ -186,7 +187,7 @@ const classes = useStyles();
         <div id="slogan" className={classes.sloganContainer}>
         <Typography className={classes.imgText}>Social media</Typography>
         <Typography className={classes.imgTextMiddle}>...that's free from ads</Typography>
-        <Typography className={classes.imgTextLower}>and much more personal!</Typography>
+        <Typography className={classes.imgTextLower}>and much more fun!</Typography>
         </div>
       </div>        
         </Grid>
