@@ -4,9 +4,11 @@ import Axios from "axios"
 import { Image } from "cloudinary-react"; 
 import Nav from "../components/Nav"
 import {Typography, ImageList, ImageListItem, Box, Button, Card} from "@material-ui/core"
+import { SRLWrapper } from "simple-react-lightbox";
 
+const useStyles = makeStyles(theme => {
 
-const useStyles = makeStyles({
+  return{
   input:{
     
     margin: "10px auto",
@@ -17,18 +19,25 @@ const useStyles = makeStyles({
   },
 
   photosTitle:{
-   fontFamily: "Fredoka One"
+   fontFamily: "Fredoka One",
+   backgroundColor: "aliceblue",
+   padding: "20px 0"
   },
 
   photosContainer:{
+    padding: "4%",
     width: "500px",
-    margin: "auto"
+    margin: "auto",
+    [theme.breakpoints.down("sm")]:{
+      width: "100%"
+    },
+    backgroundColor: "white"
   },
 
   uploadBtn:{
     margin: "10px"
   }
-  
+}
   })
 
 
@@ -79,9 +88,9 @@ const uploadImage = (e) =>{
         <div>
         <Nav/>
         <Box className={classes.photosContainer}>
-        
-            <Typography className={classes.photosTitle} variant="h2">Photos</Typography>
-        
+        <img style={{width: "100%"}}src="images/photos.png" alt="" />
+            <Typography className={classes.photosTitle} variant="h4">Photos</Typography>
+              
             
         
             
@@ -99,16 +108,20 @@ const uploadImage = (e) =>{
 <Button className={classes.uploadBtn} variant="contained" color="primary" type="submit" onClick={uploadImage}>Upload image</Button>
 
 <Box sx={{ width: "100%", height: 900, overflowY: 'scroll', margin:"auto" }}>
-
-      <ImageList variant="masonry" cols={3} gap={10}>
+<SRLWrapper>
+      <ImageList variant="masonry" cols={2} gap={10}>
         {photos.map((item) => (
           <ImageListItem key={item.imageId} id={item.imageId}>
+          
+          <a href={item.ImageURL}>
             <img
               src={`${item.imageURL}?w=248&fit=crop&auto=format`}
               srcSet={`${item.imageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item}
+              alt={item.original_filename}
               loading="lazy"
             />
+            </a>
+            
           </ImageListItem>
         ))};
 
@@ -118,16 +131,20 @@ const uploadImage = (e) =>{
         
         }).map((item) => (
           <ImageListItem key={item.imageId} id={item.imageId}>
+        
+          <a href={item.ImageURL}>
             <img
               src={`${item.imageURL}?w=248&fit=crop&auto=format`}
               srcSet={`${item.imageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item}
               loading="lazy"
             />
+             </a>
+            
           </ImageListItem>
         ))}
       </ImageList>
-     
+      </SRLWrapper>
     </Box>
 </Box>
   

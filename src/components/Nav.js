@@ -108,7 +108,7 @@ const hideShowMenu = () =>{
         <div>
 
         
-<MenuTwoToneIcon className={classes.menuBtn} onClick={hideShowMenu}/>
+<MenuTwoToneIcon className={classes.menuBtn} onClick={hideShowMenu} />
         <div style={{display: isMenuVisible ? "inline-block" : "none"}} className={classes.nav}>
        
         <Typography variant="h2" className={classes.navHeading} >So-Me</Typography>

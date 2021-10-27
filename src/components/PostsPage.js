@@ -15,24 +15,23 @@ const useStyles=makeStyles(theme=>{
     backgroundColor: "aliceblue",
     fontFamily: "Fredoka One"
   },
-  titleContainer:{
-    width: "100%",
-    backgroundSize: "cover",
-    backgroundImage: `url(./images/newsfeed.png)`,
-    height: "200px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "0 0 50px 0"
-},
-mainPage:{
-  display:"flex",
-  margin: "auto",
-[theme.breakpoints.up("sm")]:{
-  width: "500px"
-}
+    mainPage:{
+      display:"flex",
+      margin: "auto",
+    [theme.breakpoints.up("sm")]:{
+      width: "500px"
+    }
   
-}
+},
+  postsContainer:{
+    width: "500px",
+    margin: "auto",
+    padding: "4%",
+    [theme.breakpoints.down("sm")]:{
+      width: "100%"
+    },
+    backgroundColor: "white"
+  } 
 }
 })
 
@@ -61,11 +60,11 @@ const currentUser = JSON.parse(localStorage.getItem("myuser"));
      
       
       
-      <div className="posts-container">
-      <Box className={classes.titleContainer}>
+      <div className={classes.postsContainer}>
+      <img style={{width: "100%"}} src="images/newsfeed.png" alt="" />
       
       <Typography className={classes.postsTitle} variant="h4">Newsfeed</Typography>
-      </Box>
+      
  
      
       

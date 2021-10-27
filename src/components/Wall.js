@@ -66,11 +66,18 @@ const useStyles = makeStyles(theme => {
             alignItems: "center",
             background: "linear-gradient(to right, #1488cc, #2b32b2)" ,
             color: "white",
-            padding: "50px 0"
+            padding: "50px 0",
+            [theme.breakpoints.up("sm")]:{
+                flexDirection: "row"
+            }
 
         },
         friendContainer:{
             justifyContent:"center"
+        },
+        flag:{
+            width: "30%",
+            margin: "20px 0"
         }
 
     }
@@ -111,9 +118,9 @@ const handleChange = (event, newValue) => {
                 return friend;
             }).map((friendDetails, i)=>{
                 const code = friendDetails.nat;
-                const uri = "https://www.countryflags.io/";
-                const uriEnd = "/flat/64.png";
-                const fullUri = uri + code + uriEnd
+                const uri = "https://flagcdn.com/";
+                const uriEnd = ".svg";
+                const fullUri = uri + code.toLowerCase() + uriEnd
 
             
 
@@ -135,7 +142,7 @@ const handleChange = (event, newValue) => {
                    
                     <Grid item xs={6}>
                     <Typography>{friendDetails.location.state + ", " +friendDetails.location.country}</Typography>
-                    <img  src={fullUri} alt="" />
+                    <img className={classes.flag} src={fullUri} alt="" />
                     </Grid>
                     </Grid>
                     <Box sx={{ width: '100%' }}>
