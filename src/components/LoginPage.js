@@ -3,7 +3,7 @@ import {Grid, Tabs, Tab, Box, Paper, Input, Button, Typography} from "@material-
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import image from '../images/main.svg' // Import using relative path
 import skulls from "../images/skulls.png"
-import { useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 
 
@@ -186,7 +186,7 @@ const classes = useStyles();
         </div>
         <div id="slogan" className={classes.sloganContainer}>
         <Typography className={classes.imgText}>Social media</Typography>
-        <Typography className={classes.imgTextMiddle}>...that's free from ads</Typography>
+        <Typography className={classes.imgTextMiddle}>...that's simple</Typography>
         <Typography className={classes.imgTextLower}>and much more fun!</Typography>
         </div>
       </div>        

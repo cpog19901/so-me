@@ -120,6 +120,7 @@ const uploadImage = (e) =>{
               srcSet={`${item.imageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.original_filename}
               loading="lazy"
+              style={{width: "100%"}}
             />
             </a>
             
